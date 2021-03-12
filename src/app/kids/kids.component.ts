@@ -7,11 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KidsComponent implements OnInit {
 
+  tipoOperacion : String = "";
+  sumas = "sumas";
+  restas = "restas";
+  multiplicaciones = "multiplicaciones";
+  secuencias = "secuencias";
+  divisiones = "divisiones";
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  
+  seleccionarTipoEjercicios(seleccion : String){
+    this.tipoOperacion = seleccion;
+  }
 
+  volverAtras(){
+    this.tipoOperacion = ""; 
+  }
 }

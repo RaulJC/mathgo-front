@@ -7,10 +7,14 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
 import { SumasComponent } from './sumas/sumas.component';
 import { ProblemasComponent } from './problemas/problemas.component';
 import { CoreModule } from '../core/core.module';
+import { RestasComponent } from './restas/restas.component';
+import { MultiplicacionesComponent } from './multiplicaciones/multiplicaciones.component';
+import { SecuenciasComponent } from './secuencias/secuencias.component';
+import { DivisionesComponent } from './divisiones/divisiones.component';
 
 
 @NgModule({
-  declarations: [KidsComponent, PuzzleComponent, SumasComponent, ProblemasComponent],
+  declarations: [KidsComponent, PuzzleComponent, SumasComponent, ProblemasComponent, RestasComponent, MultiplicacionesComponent, SecuenciasComponent, DivisionesComponent],
   imports: [
     CommonModule,
     CoreModule,

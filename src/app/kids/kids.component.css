@@ -6,7 +6,12 @@
     padding-right: 2rem;
     border-radius: 2rem;
     padding-bottom: 0.5rem;
+    transition: font-size 0.5s;
     cursor: pointer;
+}
+
+.icon-add:hover{
+    font-size: 11rem;
 }
 
 .icon-sub{
@@ -17,7 +22,12 @@
     padding-right: 2rem;
     border-radius: 2rem;
     padding-bottom: 0.5rem;
+    transition: font-size 0.5s;
     cursor: pointer;
+}
+
+.icon-sub:hover{
+    font-size: 11rem;
 }
 
 .icon-mul{
@@ -28,7 +38,12 @@
     padding-right: 2rem;
     border-radius: 2rem;
     padding-bottom: 0.5rem;
+    transition: font-size 0.5s;
     cursor: pointer;
+}
+
+.icon-mul:hover{
+    font-size: 11rem;
 }
 
 .icon-seq{
@@ -39,7 +54,12 @@
     padding-right: 2rem;
     border-radius: 2rem;
     padding-bottom: 0.5rem;
+    transition: font-size 0.5s;
     cursor: pointer;
+}
+
+.icon-seq:hover{
+    font-size: 11rem;
 }
 
 .icon-div{
@@ -50,7 +70,27 @@
     padding-right: 2rem;
     border-radius: 2rem;
     padding-bottom: 0.5rem;
+    transition: font-size 0.5s;
     cursor: pointer;
+}
+
+.icon-div:hover{
+    font-size: 11rem;
+}
+
+.icon-back{
+    background-color: #C31E25;
+    color: white;
+    font-size: 2.5rem;
+    padding: 1.2rem;
+    border-radius: 1.1rem;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    position: absolute;
+}
+
+.icon-back:hover{
+    background-color: #af1b23;
 }
 
 .tittle{

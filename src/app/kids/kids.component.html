@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<i class="bi bi-door-open-fill icon-back d-flex mt-5 mx-5" *ngIf="tipoOperacion.length != 0" (click) = "volverAtras()"></i>
 <div class="container mt-5">
     <div class="row mb-4">
         <div class="col-lg-10 m-auto">
@@ -8,30 +9,37 @@
     </div>
     <div class="row">
         <div class="col-lg-10 m-auto">
-            <div class = "container-flex">
-                <div class="row d-flex">
-                    <div class="col-lg-3 text-center mb-3">
-                        <p class="tittle mb-0">Sumas</p>
-                        <i class="bi bi-plus-square icon-add"></i>
-                    </div>
-                    <div class="col-lg-3 text-center mb-3">
-                        <p class="tittle mb-0">Restas</p>
-                        <i class="bi bi-dash icon-sub"></i>
-                    </div>
-                    <div class="col-lg-3 text-center mb-3">
-                        <p class="tittle mb-0">Multiplicaciones</p>
-                        <i class="bi bi-x icon-mul"></i>
-                    </div>
-                    <div class="col-lg-3 text-center mb-3">
-                        <p class="tittle mb-0">Secuencias</p>
-                        <i class="bi bi bi-list-ol icon-seq"></i>
-                    </div>
-                    <div class="col-lg-3 text-center mb-3">
-                        <p class="tittle mb-0">Divisiones</p>
-                        <i class="bi bi-hr icon-div"></i>
-                    </div>
-                </div> 
-            </div>
+            <ng-container [ngSwitch]="tipoOperacion">
+                <div class = "container-flex" *ngSwitchDefault>
+                    <div class="row d-flex">
+                        <div class="col-xl-3 col-lg-4 col-md-4 text-center mb-3">
+                            <p class="tittle mb-0">Sumas</p>
+                            <i class="bi bi-plus-square icon-add" (click)="seleccionarTipoEjercicios(sumas)"></i>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-4 text-center mb-3">
+                            <p class="tittle mb-0">Restas</p>
+                            <i class="bi bi-dash icon-sub" (click)="seleccionarTipoEjercicios(restas)"></i>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-4 text-center mb-3">
+                            <p class="tittle mb-0">Multiplicaciones</p>
+                            <i class="bi bi-x icon-mul" (click)="seleccionarTipoEjercicios(multiplicaciones)"></i>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-4 text-center mb-3">
+                            <p class="tittle mb-0">Secuencias</p>
+                            <i class="bi bi bi-list-ol icon-seq" (click)="seleccionarTipoEjercicios(secuencias)"></i>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-4 text-center mb-3">
+                            <p class="tittle mb-0">Divisiones</p>
+                            <i class="bi bi-hr icon-div" (click)="seleccionarTipoEjercicios(divisiones)"></i>
+                        </div>
+                    </div> 
+                </div>
+                <app-sumas *ngSwitchCase="sumas"></app-sumas>
+                <app-restas *ngSwitchCase="restas"></app-restas>
+                <app-multiplicaciones *ngSwitchCase="multiplicaciones"></app-multiplicaciones>
+                <app-secuencias *ngSwitchCase="secuencias"></app-secuencias>
+                <app-divisiones *ngSwitchCase="divisiones"></app-divisiones>
+            </ng-container>
         </div>
     </div>
 </div>
