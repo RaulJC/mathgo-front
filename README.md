@@ -14,7 +14,7 @@ Dentro del directorio instalar node_modules:
 
 Ejecutar aplicación angular:
 
-  $ ng serve
+    $ npm install
 
 # Autor #
 

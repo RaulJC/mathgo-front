@@ -1,0 +1,58 @@
+.icon-add{
+    background-color: #9DD41D;
+    color: white;
+    font-size: 10rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 2rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.icon-sub{
+    background-color: #B921FB;
+    color: white;
+    font-size: 10rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 2rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.icon-mul{
+    background-color: #59ADFF;
+    color: white;
+    font-size: 10rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 2rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.icon-seq{
+    background-color: #FC4850;
+    color: white;
+    font-size: 10rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 2rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.icon-div{
+    background-color: #F8C822;
+    color: white;
+    font-size: 10rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 2rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.tittle{
+    font-weight: bold;
+}

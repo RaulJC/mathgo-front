@@ -1,0 +1,19 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="text-center">
+        <img src='../../assets/icon.png' alt="Pieza de puzle">
+    </div>
+    <legend class="text-center">Inicia sesión en MathGo</legend>
+    <fieldset class="login-fields p-5">
+      <div class="mb-3">
+        <label class="form-label text-label">Nombre de usuario o email</label>
+        <input type="text" id="textInput" class="form-control" placeholder="rauljimenezcamacho@gmail.com" formControlName="email">
+      </div>
+      <div class="mb-3">
+        <label class="form-label text-label">Contraseña</label>
+        <input type="password" id="textInput" class="form-control" placeholder="Contraseña" formControlName="password">
+      </div>
+      <div class="row-lg-auto text-center">
+        <button type="submit" class="btn singin-btn container-fluid">Iniciar Sesión</button>
+      </div>
+    </fieldset>
+</form>

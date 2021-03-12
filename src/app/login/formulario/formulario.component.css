@@ -1,0 +1,21 @@
+.login-fields{
+    border: solid;
+    background-color: white;
+    border-width: 0.1rem;
+    border-color: #D8DEE2;
+    border-radius: 0.5rem;
+}
+
+.text-label{
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.singin-btn{
+    background-color: #90C418;
+    color: white;
+}
+
+.singin-btn:hover{
+    background-color: #79a317;
+}
