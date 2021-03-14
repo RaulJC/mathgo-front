@@ -1,0 +1,11 @@
+.operation-text{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.divider{
+    opacity: 1;
+    color: black;
+    background-color: black;
+    height: 0.25rem;
+}

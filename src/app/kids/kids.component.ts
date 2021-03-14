@@ -13,6 +13,7 @@ export class KidsComponent implements OnInit {
   multiplicaciones = "multiplicaciones";
   secuencias = "secuencias";
   divisiones = "divisiones";
+  problemas= "problemas";
 
   constructor() { }
 
