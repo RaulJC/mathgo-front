@@ -1,0 +1,68 @@
+{
+    "problemas": [
+        {
+            "ejercicios": [
+                {
+                    "enunciado": "Enunciado 1",
+                    "operaciones" : [
+                        {   
+                            "tipo" : "sumas",
+                            "operandos": [7, 3],
+                            "resultado" : 10
+                        },
+                        {   
+                            "tipo" : "sumas",
+                            "operandos": [7, 3],
+                            "resultado" : 10
+                        },
+                        {   
+                            "tipo" : "sumas",
+                            "operandos": [7, 3],
+                            "resultado" : 10
+                        },
+                        {   
+                            "tipo" : "sumas",
+                            "operandos": [7, 3],
+                            "resultado" : 10
+                        },
+                        {   
+                            "tipo" : "sumas",
+                            "operandos": [7, 3],
+                            "resultado" : 10
+                        }
+                    ]
+                },   
+                {
+                    "enunciado": "Enunciado 2",
+                    "operaciones" : [
+                        {   
+                            "tipo" : "sumas",
+                            "operandos": [7, 3],
+                            "resultado" : 10
+                        },
+                        {   
+                            "tipo" : "sumas",
+                            "operandos": [7, 3],
+                            "resultado" : 10
+                        },
+                        {   
+                            "tipo" : "sumas",
+                            "operandos": [7, 3],
+                            "resultado" : 10
+                        },
+                        {   
+                            "tipo" : "sumas",
+                            "operandos": [7, 3],
+                            "resultado" : 10
+                        },
+                        {   
+                            "tipo" : "sumas",
+                            "operandos": [7, 3],
+                            "resultado" : 10
+                        }
+                    ]
+                }
+            ]
+        }
+    ]  
+}

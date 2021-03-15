@@ -11,6 +11,10 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   exports: [
     NavbarComponent
+  ],
+  providers: [
+    { provide: 'Window', useFactory: () => window }
   ]
 })
+
 export class CoreModule { }
