@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sumas',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SumasComponent implements OnInit {
 
+  @Output() nivel = new EventEmitter<String>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  seleccionarNivel(nivel : String){
+    this.nivel.emit(nivel);
+  }
 }

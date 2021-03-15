@@ -1,9 +1,19 @@
 <nav class="navbar nav-style">
-    <div class="row">
-        <div class="col d-flex">
+    <div class="container-fluid">
+        <p class="page-name my-auto">
             <img src='../../assets/icon.png' alt="Pieza de puzle" style="height: 70px;">
-            <p class="page-name px-3 m-auto">MathGo<p>
-        </div>
+            MathGo
+        </p>
+        <button class="nav-item btn dropdown d-flex user-style">
+            <a class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style ="color:white">
+                <i class="bi bi-person-circle user-icon"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item text-left" >Informacion</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-left" href="/login">Iniciar Sesion</a></li>
+            </ul>
+        </button>
     </div>
-</nav>
+  </nav>
 

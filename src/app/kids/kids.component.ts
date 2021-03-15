@@ -7,13 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KidsComponent implements OnInit {
 
-  tipoOperacion : String = "";
+  componente : String = "";
+  nivelSeleccionado : String = "";
+
   sumas = "sumas";
   restas = "restas";
   multiplicaciones = "multiplicaciones";
   secuencias = "secuencias";
   divisiones = "divisiones";
-  problemas= "problemas";
+  problemas = "problemas";
 
   constructor() { }
 
@@ -21,10 +23,15 @@ export class KidsComponent implements OnInit {
   }
 
   seleccionarTipoEjercicios(seleccion : String){
-    this.tipoOperacion = seleccion;
+    this.componente = seleccion;
   }
 
   volverAtras(){
-    this.tipoOperacion = ""; 
+    this.componente = ""; 
+  }
+
+  seleccionarNivel(nivel: String){
+    this.nivelSeleccionado = nivel;
+    this.componente = "problemas";
   }
 }

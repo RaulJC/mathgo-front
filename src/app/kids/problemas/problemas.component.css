@@ -1,6 +1,18 @@
-.operation-text{
-    font-size: 1.5rem;
+.form-style{
+    border: solid; 
+    border-radius: 1rem;
+    border-width: 0.1rem;
+    border-color: #D8DEE2;
+    background-color: white;
+}
+
+.enunciado{
+    font-size: 1.2rem;
     font-weight: bold;
+}
+
+.operation-text{
+    font-size: 2.5rem;
 }
 
 .divider{
@@ -8,4 +20,16 @@
     color: black;
     background-color: black;
     height: 0.25rem;
+}
+
+.exercise-btn{
+    color: white;
+    font-weight: bold;
+    background-color: #90C418;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+}
+
+.exercise-btn:hover{
+    background-color: #79a317;
 }

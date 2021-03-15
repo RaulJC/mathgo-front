@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<i class="bi bi-door-open-fill icon-back d-flex mt-5 mx-5" *ngIf="tipoOperacion.length != 0" (click) = "volverAtras()"></i>
+<i class="bi bi-door-open-fill icon-back d-flex mt-5 mx-5" *ngIf="componente.length != 0" (click) = "volverAtras()"></i>
 <div class="container mt-5">
     <div class="row mb-4">
         <div class="col-lg-10 m-auto">
@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         <div class="col-lg-10 m-auto">
-            <ng-container [ngSwitch]="tipoOperacion">
+            <ng-container [ngSwitch]="componente">
                 <div class = "container-flex" *ngSwitchDefault>
                     <div class="row d-flex">
                         <div class="col-xl-3 col-lg-4 col-md-4 text-center mb-3">
@@ -34,7 +34,7 @@
                         </div>
                     </div> 
                 </div>
-                <app-sumas *ngSwitchCase="sumas"></app-sumas>
+                <app-sumas *ngSwitchCase="sumas" (nivel)="seleccionarNivel($event)"></app-sumas>
                 <app-restas *ngSwitchCase="restas"></app-restas>
                 <app-multiplicaciones *ngSwitchCase="multiplicaciones"></app-multiplicaciones>
                 <app-secuencias *ngSwitchCase="secuencias"></app-secuencias>

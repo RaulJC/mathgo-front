@@ -7,3 +7,14 @@
     margin: 0;
     font-size: 2rem;
 }
+
+.user-style{
+    background-color: #424141;
+    border-color: #424141;
+    padding:0;
+}
+
+.user-icon{
+    color: white;
+    font-size: 1.3rem;
+}
