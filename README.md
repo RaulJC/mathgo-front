@@ -16,6 +16,10 @@ Ejecutar aplicación angular:
 
     $ ng serve
 
+Ejecutar servidor JSON Express con datos de ejemplo:
+
+    $ npm run server
+
 # Autor #
 
 Raúl Jiménez Camacho <100363767@alumnos.uc3m.es>
