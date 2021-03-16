@@ -1,68 +1,46 @@
 {
-    "problemas": [
-        {
-            "ejercicios": [
-                {
-                    "enunciado": "Enunciado 1",
-                    "operaciones" : [
-                        {   
-                            "tipo" : "sumas",
-                            "operandos": [7, 3],
-                            "resultado" : 10
-                        },
-                        {   
-                            "tipo" : "sumas",
-                            "operandos": [7, 3],
-                            "resultado" : 10
-                        },
-                        {   
-                            "tipo" : "sumas",
-                            "operandos": [7, 3],
-                            "resultado" : 10
-                        },
-                        {   
-                            "tipo" : "sumas",
-                            "operandos": [7, 3],
-                            "resultado" : 10
-                        },
-                        {   
-                            "tipo" : "sumas",
-                            "operandos": [7, 3],
-                            "resultado" : 10
-                        }
-                    ]
-                },   
-                {
-                    "enunciado": "Enunciado 2",
-                    "operaciones" : [
-                        {   
-                            "tipo" : "sumas",
-                            "operandos": [7, 3],
-                            "resultado" : 10
-                        },
-                        {   
-                            "tipo" : "sumas",
-                            "operandos": [7, 3],
-                            "resultado" : 10
-                        },
-                        {   
-                            "tipo" : "sumas",
-                            "operandos": [7, 3],
-                            "resultado" : 10
-                        },
-                        {   
-                            "tipo" : "sumas",
-                            "operandos": [7, 3],
-                            "resultado" : 10
-                        },
-                        {   
-                            "tipo" : "sumas",
-                            "operandos": [7, 3],
-                            "resultado" : 10
-                        }
-                    ]
-                }
-            ]
-        }
-    ]  
+    "problemas": {
+        "ejercicios" : [
+            {
+                "enunciado": "Hola, me han dicho que te encantan las sumas, vamos a empezar con este ejercicio a ver que tal te va, es muy sencillo así que seguro que no supone un reto para tí.",
+                "operaciones": [
+                    {
+                        "tipo" : "suma",
+                        "operandos": [7,3],
+                        "resultado":10
+                    },
+                    {
+                        "tipo" : "suma",
+                        "operandos": [7,3],
+                        "resultado":10
+                    },
+                    {
+                        "tipo" : "suma",
+                        "operandos": [7,3],
+                        "resultado":10
+                    }
+                ]
+            },
+            {
+                "enunciado": "Ya veo que ha sido facil, a ver que te parecen estas sumas, he introducido alguna sorpresa jejeje.",
+                "operaciones": [
+                    {
+                        "tipo" : "suma",
+                        "operandos": [7,3],
+                        "resultado":10
+                    },
+                    {
+                        "tipo" : "suma",
+                        "operandos": [7,3],
+                        "resultado":10
+                    },
+                    {
+                        "tipo" : "suma",
+                        "operandos": [7,3],
+                        "resultado":10
+                    }
+                ]
+            }
+        ] 
+    }
 }

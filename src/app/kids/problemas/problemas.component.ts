@@ -17,6 +17,8 @@ export class ProblemasComponent implements OnInit {
 
   ngOnInit(): void {
     this.problemasService.obtenerProblemas().subscribe(problema =>{
+      console.log(problema);
+      console.log(problema.ejercicios);
       this.problemaActual = problema;
     });
   }
