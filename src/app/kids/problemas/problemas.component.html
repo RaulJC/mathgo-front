@@ -1,35 +1,36 @@
-<form class="form-style">
-    <div class= "container py-3" *ngFor="let ejercicio of problemaActual.ejercicios">
-        <div class="row-lg-auto">
-            <p class="enunciado">{{ejercicio.enunciado}}</p>
-        </div>
-        <div class="row-lg-auto d-flex">
-            <!-- TEMPLATE OPERANDOS DE 1 DIGITO -->
-            <div class="col-lg-1 mx-5" *ngFor="let operacion of ejercicio.operaciones">
-                <div class = "row-auto d-flex">
-                    <div class="col-lg-2 float-left d-flex justify-content-center align-items-center">
-                        <span class="operation-text mb-0">+</span>
-                    </div>
-                    <div class="col-lg-10 float-rigth text-center">
-                        <div class="row-auto" *ngFor="let operando of operacion.operandos">
-                            <p class ="operation-text mb-0">{{operando}}</p>
+<form>
+    <div class = "form-style">
+        <div class= "container py-3" *ngFor="let ejercicio of problemaActual.ejercicios">
+            <div class="row-lg-auto">
+                <p class="enunciado">{{ejercicio.enunciado}}</p>
+            </div>
+            <div class="row-lg-auto d-flex">
+                <div class="col-lg-1 mx-5" *ngFor="let operacion of ejercicio.operaciones">
+                    <div class = "row-auto d-flex">
+                        <div class="col-lg-2 float-left d-flex justify-content-center align-items-center">
+                            <span class="operation-text mb-0">+</span>
+                        </div>
+                        <div class="col-lg-10 float-rigth text-center">
+                            <div class="row-auto" *ngFor="let operando of operacion.operandos">
+                                <p class ="operation-text mb-0">{{operando}}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class = "row-auto">
-                    <hr class="divider">
-                </div>
-                <div class = "row-auto">
-                    <div class="input-group flex-nowrap">
-                        <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping" style="border-color: #90C418">
-                      </div>
+                    <div class = "row-auto">
+                        <hr class="divider">
+                    </div>
+                    <div class = "row-auto">
+                        <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping" style="border-color: #90C418">
+                          </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
-</form>
-<div class= "row-lg-12">
+    <div class= "row-lg-12">
     <div class="col-lg-12">
         <button type="submit" class="btn container-fluid exercise-btn my-3">ENVIAR</button>
     </div>
 </div>
+</form>

@@ -34,12 +34,12 @@
                         </div>
                     </div> 
                 </div>
-                <app-sumas *ngSwitchCase="sumas" (nivel)="seleccionarNivel($event)"></app-sumas>
+                <app-sumas *ngSwitchCase="sumas" (nivel)="seleccionarNivel($event,'sumas')"></app-sumas>
                 <app-restas *ngSwitchCase="restas"></app-restas>
                 <app-multiplicaciones *ngSwitchCase="multiplicaciones"></app-multiplicaciones>
-                <app-secuencias *ngSwitchCase="secuencias"></app-secuencias>
+                <app-secuencias *ngSwitchCase="secuencias" (nivel)="seleccionarNivel($event,'secuencias')"></app-secuencias>
                 <app-divisiones *ngSwitchCase="divisiones"></app-divisiones>
-                <app-problemas *ngSwitchCase="problemas"></app-problemas>
+                <app-problemas *ngSwitchCase="problemas" [tipoProblema]="tipoProblema" [nivel]="nivelSeleccionado"></app-problemas>
             </ng-container>
         </div>
     </div>

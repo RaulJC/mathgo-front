@@ -1,14 +1,14 @@
 export interface IProblema{
-    ejercicios?: IEjercicio[];
+    ejercicios: IEjercicio[];
 }
 
 export interface IEjercicio{
-    enunciado?: String;
-    operaciones?: IOperacion[];
+    enunciado: String;
+    operaciones: IOperacion[];
 }
 
 export interface IOperacion{
-    tipo?: String;
-    operandos?: number[];
-    resultado?: number;
+    tipo: String;
+    operandos: String[];
+    resultado: number;
 }

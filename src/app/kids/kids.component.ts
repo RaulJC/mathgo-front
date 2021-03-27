@@ -9,6 +9,7 @@ export class KidsComponent implements OnInit {
 
   componente : String = "";
   nivelSeleccionado : String = "";
+  tipoProblema: String = "";
 
   sumas = "sumas";
   restas = "restas";
@@ -30,8 +31,9 @@ export class KidsComponent implements OnInit {
     this.componente = ""; 
   }
 
-  seleccionarNivel(nivel: String){
+  seleccionarNivel(nivel: String, problema: String){
     this.nivelSeleccionado = nivel;
     this.componente = "problemas";
+    this.tipoProblema = problema;
   }
 }

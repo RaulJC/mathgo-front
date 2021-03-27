@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProblemsService } from 'src/app/core/services/problems.service';
-import { IEjercicio, IProblema } from 'src/app/shared/interfaces/interfaces';
+import { IProblema } from 'src/app/shared/interfaces/interfaces';
 
 
 @Component({
@@ -10,15 +10,16 @@ import { IEjercicio, IProblema } from 'src/app/shared/interfaces/interfaces';
 })
 export class ProblemasComponent implements OnInit {
 
-  problemaActual : IProblema = {};
+  @Input() tipoProblema: String;
+  @Input() nivel: String;
+
+  problemaActual : IProblema;
 
 
   constructor(private problemasService : ProblemsService) { }
 
   ngOnInit(): void {
     this.problemasService.obtenerProblemas().subscribe(problema =>{
-      console.log(problema);
-      console.log(problema.ejercicios);
       this.problemaActual = problema;
     });
   }
