@@ -22,12 +22,13 @@ export class FormularioComponent implements OnInit {
   }
 
   onSubmit(){
+    /*
     let user$ = this.auth.login(this.loginForm.value.username,this.loginForm.value.password);
-
     user$.subscribe(
       (data: any) => console.log(data),
-      err => console.error(err)
-  );
-    
+      err => console.error(err),
+    );
+    */
+    this.router.navigate(['/kids']);
   }
 }
