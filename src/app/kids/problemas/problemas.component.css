@@ -16,6 +16,21 @@
     font-size: 1.5rem;
     resize: none;
 }
+
+.acierto-text{
+    font-size: 1.5rem;
+    font-weight: bold;
+    resize: none;
+    color: green;
+}
+
+.fallo-text{
+    font-size: 1.5rem;
+    font-weight: bold;
+    resize: none;
+    color: red;
+}
+
 .separator-text{
     font-size: 1.5rem;
     resize: none;

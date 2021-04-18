@@ -26,7 +26,21 @@
                                         <div class="col-lg-auto">
                                             <p class="separator-text mb-0 mx-auto ms-2 align-middle">;</p>
                                         </div>
-                                    </div>  
+                                    </div>
+                                    <div class = "row-lg-auto d-flex" *ngIf="esCorregido">
+                                        <ng-container formArrayName="respuestas">
+                                            <div class="col-lg-3 text-center d-flex me-2" *ngFor="let respuesta of getRespuestas(operacion)?.controls;index as n">
+                                                <ng-container [formGroupName]="n">
+                                                    <div class="input-group" *ngIf="!respuesta.get('resultado')?.disabled">
+                                                        <input type="text" readonly class="form-control-plaintext acierto-text m-auto align-middle text-center" aria-label="Disabled input example" formControlName="resultado">
+                                                    </div>
+                                                    <div class="input-group" *ngIf="respuesta.get('resultado')?.disabled">
+                                                        <input type="text" readonly class="form-control-plaintext fallo-text m-auto align-middle text-center" aria-label="Disabled input example" formControlName="resultado">
+                                                    </div>
+                                                </ng-container>
+                                            </div>
+                                        </ng-container>
+                                    </div>
                                 </ng-container> 
                             </div>
                         </ng-container>
@@ -55,7 +69,7 @@
         <p>Has tardado un total de: {{minutos}}min {{segundos}}seg</p>
     </div>
     <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Ver solución</button>     
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal" (click)="verSolucion()">Ver solución</button>     
     </div>
     </div>
 </div>

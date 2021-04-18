@@ -22,7 +22,7 @@ export class ProblemasComponent implements OnInit {
   segundos: number;
   aciertos : number = 0;
   total : number = 0;
-
+  esCorregido = false;
   problemaActual : IProblema;
 
   problemaForm = new FormGroup({
@@ -62,7 +62,7 @@ export class ProblemasComponent implements OnInit {
           })
           operacion.resultado.forEach(resultado=>{
             var resultadoForm = new FormGroup({
-              resultado: new FormControl(resultado)
+              resultado: new FormControl({value:resultado,disabled:false})
             })
             respuestasF.push(resultadoForm);
           })
@@ -117,5 +117,24 @@ export class ProblemasComponent implements OnInit {
   }
   getRespuestas(abstractEjercicio:AbstractControl){
     return <FormArray>abstractEjercicio.get('respuestas');
+  }
+  verSolucion(){
+    this.esCorregido = true;
+    this.getEjercicios(this.problemaForm)?.controls.forEach(control=>{
+      this.getOperaciones(control)?.controls.forEach(control=>{
+       var operandos = this.getOperandos(control)?.controls.map(operacion=>{
+          return operacion.value;
+        })
+        var respuestasDadas = this.getRespuestas(control)?.controls.map(respuesta=>{
+          return respuesta.value;
+        })
+        for(let i = 0; i<operandos.length;i++){
+          if(operandos[i].operando != respuestasDadas[i].resultado){
+            this.getOperaciones(control)?.controls[i].disable();
+            this.getRespuestas(control)?.controls[i].disable();
+          }
+        }
+      })
+    });
   }
 }
