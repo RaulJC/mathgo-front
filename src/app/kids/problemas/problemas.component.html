@@ -8,9 +8,9 @@
                             <textarea type="text" readonly class="form-control-plaintext enunciado"  aria-label="Disabled input example" formControlName="enunciado"></textarea>
                         </div>
                     </div>
-                    <div class="row-lg-12">
+                    <div class="row-lg-12 m-auto align-middle">
                         <ng-container formArrayName="operaciones">
-                            <div class="col col-lg-3 d-inline-block" *ngFor="let operacion of getOperaciones(ejercicio)?.controls;index as j">
+                            <div class="col col-lg-3 d-inline-block m-1 px-1 operand-box" *ngFor="let operacion of getOperaciones(ejercicio)?.controls;index as j">
                                 <ng-container [formGroupName]="j">
                                     <div class = "row-lg-auto d-flex">
                                         <ng-container formArrayName="operandos">
@@ -23,9 +23,6 @@
                                                 </ng-container>
                                             </div>
                                         </ng-container>
-                                        <div class="col-lg-auto">
-                                            <p class="separator-text mb-0 mx-auto ms-2 align-middle">;</p>
-                                        </div>
                                     </div>
                                     <div class = "row-lg-auto d-flex" *ngIf="esCorregido">
                                         <ng-container formArrayName="respuestas">

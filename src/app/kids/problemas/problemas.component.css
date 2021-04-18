@@ -12,6 +12,13 @@
     resize: none;
 }
 
+.operand-box{
+    border: solid;
+    border-width: 2px;
+    border-bottom: none;
+    border-top: none;
+}
+
 .operation-text{
     font-size: 1.5rem;
     resize: none;
