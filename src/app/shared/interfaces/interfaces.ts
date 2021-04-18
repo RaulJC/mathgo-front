@@ -24,7 +24,7 @@ export interface IEjercicio{
 export interface IOperacion{
     tipo: String;
     operandos: String[];
-    resultado: number;
+    resultado: string[];
 }
 
 export interface Credenciales{

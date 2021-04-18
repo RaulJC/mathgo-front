@@ -16,6 +16,13 @@ export class ProblemasComponent implements OnInit {
   @Input() tipoProblema: String;
   @Input() nivel: String;
 
+  inicio : Date;
+  fin: Date;
+  minutos: number;
+  segundos: number;
+  aciertos : number = 0;
+  total : number = 0;
+
   problemaActual : IProblema;
 
   problemaForm = new FormGroup({
@@ -36,9 +43,11 @@ export class ProblemasComponent implements OnInit {
         ejercicio.operaciones.forEach(operacion =>{
           let operacionF = new FormGroup({
             tipo : new FormControl(operacion.tipo),
-            operandos : new FormArray ([])
+            operandos : new FormArray ([]),
+            respuestas : new FormArray([])
           })
           let operandosF = operacionF.get('operandos') as FormArray;
+          let respuestasF = operacionF.get('respuestas') as FormArray;
           operacion.operandos.forEach(operando =>{
             if(operando != '?'){
               var operandoForm = new FormGroup({
@@ -51,29 +60,62 @@ export class ProblemasComponent implements OnInit {
             }
             operandosF.push(operandoForm);
           })
+          operacion.resultado.forEach(resultado=>{
+            var resultadoForm = new FormGroup({
+              resultado: new FormControl(resultado)
+            })
+            respuestasF.push(resultadoForm);
+          })
           operacionesF.push(operacionF);
         })
         this.ejercicios.push(ejercicioF);
       })
-      
-      console.log(this.problemaActual);
-      console.log(this.problemaForm);
     });
+
+    this.inicio = new Date(Date.now());
   }
 
   ngOnInit(): void {
-     
-  }
-
-  onSubmit(){
-    console.log(this.problemaForm.value);
-  }
-  getEjercicio(abstractEjercicio:AbstractControl){
-    return <FormArray>abstractEjercicio.get('operaciones');
+  
   }
  
+  onSubmit(){
+    this.fin = new Date(Date.now());
+    this.getEjercicios(this.problemaForm)?.controls.forEach(control=>{
+      this.getOperaciones(control)?.controls.forEach(control=>{
+       var operandos = this.getOperandos(control)?.controls.map(operacion=>{
+          return operacion.value;
+        })
+        var respuestasDadas = this.getRespuestas(control)?.controls.map(respuesta=>{
+          return respuesta.value;
+        })
+        var esAcierto = true;
+        for(let i = 0; i<operandos.length;i++){
+          if(operandos[i].operando == respuestasDadas[i].resultado && esAcierto){
+            esAcierto = true;
+          }else{
+            esAcierto = false;
+          }
+        }
+        if(esAcierto) this.aciertos = this.aciertos + 1;
+        this.total = this.total + 1;
+      })
+    });
+    var diferencia = Math.abs(this.fin.getSeconds() - this.inicio.getSeconds());
+    this.minutos = Math.floor(diferencia / 60);
+    this.segundos = diferencia - this.minutos*60;
+  }
+
+  getEjercicios(abstractEjercicio:AbstractControl){
+    return <FormArray>abstractEjercicio.get('ejercicios');
+  }
+  getOperaciones(abstractEjercicio:AbstractControl){
+    return <FormArray>abstractEjercicio.get('operaciones');
+  }
   getOperandos(abstractEjercicio:AbstractControl){
     return <FormArray>abstractEjercicio.get('operandos');
   }
-  
+  getRespuestas(abstractEjercicio:AbstractControl){
+    return <FormArray>abstractEjercicio.get('respuestas');
+  }
 }

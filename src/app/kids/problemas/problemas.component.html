@@ -8,25 +8,26 @@
                             <textarea type="text" readonly class="form-control-plaintext enunciado"  aria-label="Disabled input example" formControlName="enunciado"></textarea>
                         </div>
                     </div>
-                    <div class="row-lg-auto d-flex">
+                    <div class="row-lg-12">
                         <ng-container formArrayName="operaciones">
-                            <div class="col-lg-3 mx-5" *ngFor="let operacion of getEjercicio(ejercicio)?.controls;index as j">
+                            <div class="col col-lg-3 d-inline-block" *ngFor="let operacion of getOperaciones(ejercicio)?.controls;index as j">
                                 <ng-container [formGroupName]="j">
-                                    <div class = "row-auto d-inline">
-                                        <div class="col-lg-4 float-rigth text-center">
-                                            <ng-container formArrayName="operandos">
-                                                <div class="row-auto" *ngFor="let operando of getOperandos(operacion)?.controls;index as m">
-                                                    <ng-container [formGroupName]="m">
-                                                        <div class="input-group" *ngIf="operando.get('operando')?.disabled">
-                                                            <textarea type="text" readonly class="form-control-plaintext operation-text"  aria-label="Disabled input example" formControlName="operando"></textarea>
-                                                        </div>
-                                                        <input type="text" class="form-control" formControlName="operando" *ngIf="!operando.get('operando')?.disabled">
-                                                    </ng-container>
-                                                </div>
-                                            </ng-container>
+                                    <div class = "row-lg-auto d-flex">
+                                        <ng-container formArrayName="operandos">
+                                            <div class="col-lg-3 text-center d-flex me-2" *ngFor="let operando of getOperandos(operacion)?.controls;index as m">
+                                                <ng-container [formGroupName]="m">
+                                                    <div class="input-group" *ngIf="operando.get('operando')?.disabled">
+                                                        <input type="text" readonly class="form-control-plaintext operation-text m-auto align-middle text-center" aria-label="Disabled input example" formControlName="operando">
+                                                    </div>
+                                                    <input type="text" class="form-control operation-text m-auto align-middle p-1" formControlName="operando" *ngIf="!operando.get('operando')?.disabled">
+                                                </ng-container>
+                                            </div>
+                                        </ng-container>
+                                        <div class="col-lg-auto">
+                                            <p class="separator-text mb-0 mx-auto ms-2 align-middle">;</p>
                                         </div>
-                                    </div>
-                                </ng-container>
+                                    </div>  
+                                </ng-container> 
                             </div>
                         </ng-container>
                     </div>
@@ -36,7 +37,27 @@
     </div>
     <div class= "row-lg-12">
     <div class="col-lg-12">
-        <button click="onSubmit()" class="btn container-fluid exercise-btn my-3">ENVIAR</button>
+        <button click="onSubmit()" class="btn container-fluid exercise-btn my-3" data-bs-toggle="modal" data-bs-target="#exampleModal">ENVIAR</button>
     </div>
 </div>
 </form>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Resumen</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <p>Tu puntuación ha sido de: {{aciertos}} sobre {{total}}</p>
+        <p>Has tardado un total de: {{minutos}}min {{segundos}}seg</p>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Ver solución</button>     
+    </div>
+    </div>
+</div>
+</div>
+  

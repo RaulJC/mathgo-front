@@ -2,7 +2,7 @@
     "problemas": {
         "ejercicios" : [
             {
-                "enunciado": "Hola, me han dicho que te encantan las sumas, vamos a empezar con este ejercicio a ver que tal te va, es muy sencillo así que seguro que no supone un reto para tí.",
+                "enunciado": "Así que quieres ponerte a prueba con unas secuencias, veámos que te parecen estas ...",
                 "operaciones": [
                     {
                         "tipo" : "secuence",
@@ -11,34 +11,63 @@
                     },
                     {
                         "tipo" : "secuence",
-                        "operandos": ["1","?","?"],
-                        "resultado":["1","2","3"]
+                        "operandos": ["5","?","7"],
+                        "resultado":["5","6","7"]
                     },
                     {
                         "tipo" : "secuence",
-                        "operandos": ["1","?","?"],
-                        "resultado":["1","2","3"]
+                        "operandos": ["12","13","?"],
+                        "resultado":["12","13","14"]
+                    },
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["?","25","?"],
+                        "resultado":["24","25","26"]
+                    },
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["17","18","?"],
+                        "resultado":["17","18","19"]
                     }
-
                 ]
             },
             {
-                "enunciado": "Ya veo que ha sido facil, a ver que te parecen estas sumas, he introducido alguna sorpresa jejeje.",
+                "enunciado": "Vas más rápido de lo que me esperaba, tendré que romperme la cabeza esta vez ...",
                 "operaciones": [
                     {
                         "tipo" : "secuence",
-                        "operandos": ["1","?","?"],
-                        "resultado":["1","2","3"]
+                        "operandos": ["33","?","?"],
+                        "resultado":["33","34","35"]
                     },
                     {
                         "tipo" : "secuence",
-                        "operandos": ["1","?","?"],
-                        "resultado":["1","2","3"]
+                        "operandos": ["90","91","?"],
+                        "resultado":["90","91","92"]
                     },
                     {
                         "tipo" : "secuence",
-                        "operandos": ["1","?","?"],
-                        "resultado":["1","2","3"]
+                        "operandos": ["?","73","?"],
+                        "resultado":["72","73","74"]
+                    }
+                ]
+            },
+            {
+                "enunciado": "Estoy harto, tendré que sacar la artillería pesada ;)",
+                "operaciones": [
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["105","?","?"],
+                        "resultado":["105","106","107"]
+                    },
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["?","167","?"],
+                        "resultado":["166","167","168"]
+                    },
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["719","?","?"],
+                        "resultado":["719","720","721"]
                     }
                 ]
             }
