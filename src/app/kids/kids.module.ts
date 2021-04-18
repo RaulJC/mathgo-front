@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { KidsRoutingModule } from './kids-routing.module';
 import { KidsComponent } from './kids.component';
 import { PuzzleComponent } from './puzzle/puzzle.component';
@@ -11,6 +10,7 @@ import { RestasComponent } from './restas/restas.component';
 import { MultiplicacionesComponent } from './multiplicaciones/multiplicaciones.component';
 import { SecuenciasComponent } from './secuencias/secuencias.component';
 import { DivisionesComponent } from './divisiones/divisiones.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,6 +18,8 @@ import { DivisionesComponent } from './divisiones/divisiones.component';
   imports: [
     CommonModule,
     CoreModule,
+    FormsModule,
+    ReactiveFormsModule,
     KidsRoutingModule
   ]
 })

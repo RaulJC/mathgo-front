@@ -9,10 +9,12 @@
 .enunciado{
     font-size: 1.2rem;
     font-weight: bold;
+    resize: none;
 }
 
 .operation-text{
     font-size: 2.5rem;
+    resize: none;
 }
 
 .exercise-btn{
