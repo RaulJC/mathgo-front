@@ -1,0 +1,35 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="text-center">
+        <img src='../../../assets/imagenes/logo.png' alt="Pieza de puzle">
+    </div>
+    <legend class="text-center">Registrate en MathGo</legend>
+    <fieldset class="login-fields p-5">
+      <div class="mb-3">
+        <label class="form-label text-label">¿Que rol vas a desempeñar?</label>
+        <select class="form-select form-select-mb mb-3" aria-label=".form-select-mb example" formControlName="rol">
+            <option>Selecciona tu rol</option>
+            <option value="KID">KID</option>
+            <option value="PROFESIONAL">PROFESIONAL</option>
+          </select>
+      </div>
+      <div class="mb-3">
+            <label class="form-label text-label">Nombre</label>
+            <input type="text" id="textInput" class="form-control" placeholder="Nombre" formControlName="nombre">
+      </div>
+      <div class="mb-3" *ngIf="registerForm.controls.rol.value == 'KID'">
+        <label class="form-label text-label">Edad</label>
+        <input type="text" id="textInput" class="form-control" placeholder="Edad" formControlName="edad">
+      </div>
+      <div class="mb-3">
+        <label class="form-label text-label">Nombre de usuario</label>
+        <input type="text" id="textInput" class="form-control" placeholder="Nombre de usuario" formControlName="username">
+      </div>
+      <div class="mb-3">
+        <label class="form-label text-label">Contraseña</label>
+        <input type="password" id="textInput" class="form-control" placeholder="Password" formControlName="password">
+      </div>
+      <div class="row-lg-auto text-center">
+        <button type="submit" class="btn singin-btn container-fluid">Registrarse</button>
+      </div>
+    </fieldset>
+</form>

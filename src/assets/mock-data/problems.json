@@ -72,5 +72,64 @@
                 ]
             }
         ] 
+    },
+    "sumas": {
+        "ejercicios" : [
+            {
+                "enunciado": "Así que quieres ponerte a prueba con unas secuencias, veámos que te parecen estas ...",
+                "operaciones": [
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["1","2","?"],
+                        "resultado":["1","2","3"]
+                    },
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["5","?","7"],
+                        "resultado":["5","2","7"]
+                    },
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["12","13","?"],
+                        "resultado":["12","13","25"]
+                    },
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["15","25","40"],
+                        "resultado":["15","25","40"]
+                    },
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["17","18","?"],
+                        "resultado":["17","18","35"]
+                    },
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["9","5","?"],
+                        "resultado":["9","5","14"]
+                    }
+                ]
+            },
+            {
+                "enunciado": "Vas más rápido de lo que me esperaba, tendré que romperme la cabeza esta vez ...",
+                "operaciones": [
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["?","33","70"],
+                        "resultado":["37","33","70"]
+                    },
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["90","91","?"],
+                        "resultado":["90","91","181"]
+                    },
+                    {
+                        "tipo" : "secuence",
+                        "operandos": ["13","5","?"],
+                        "resultado":["13","5","18"]
+                    }
+                ]
+            }
+        ] 
     }
 }

@@ -8,8 +8,9 @@
                             <textarea type="text" readonly class="form-control-plaintext enunciado"  aria-label="Disabled input example" formControlName="enunciado"></textarea>
                         </div>
                     </div>
-                    <div class="row-lg-12 m-auto align-middle">
-                        <ng-container formArrayName="operaciones">
+                    <div class="row row-lg-auto justify-content-lg-center">
+                        <!-- Plantilla para problemas de secuencias -->
+                        <ng-container formArrayName="operaciones" *ngIf= "tipoProblema == 'secuencias'">
                             <div class="col col-lg-3 d-inline-block m-1 px-1 operand-box" *ngFor="let operacion of getOperaciones(ejercicio)?.controls;index as j">
                                 <ng-container [formGroupName]="j">
                                     <div class = "row-lg-auto d-flex">
@@ -39,6 +40,57 @@
                                         </ng-container>
                                     </div>
                                 </ng-container> 
+                            </div>
+                        </ng-container>
+                        <!-- Plantilla para problemas de sumas, restas, multiplicaciones y divisiones -->
+                        <ng-container formArrayName="operaciones" *ngIf= "tipoProblema != 'secuencias'">
+                            <div class="col col-lg-3 d-inline-block m-1 px-1" *ngFor="let operacion of getOperaciones(ejercicio)?.controls;index as j">
+                                <div class="row row-lg-auto d-flex">
+                                    <ng-container [formGroupName]="j">
+                                        <div class = "col-lg-6">
+                                            <ng-container formArrayName="operandos">
+                                                <div class = "row-lg-auto d-flex">
+                                                    <div class="col-lg-3">
+                                                        <p class="mt-4 operation-text text-center">+</p>
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <div class="row-lg-auto text-center me-2" *ngFor="let operando of getOperandos(operacion)?.controls;index as m">
+                                                            <ng-container [formGroupName]="m">
+                                                                <hr class="separator-text" *ngIf="(m+1) == getOperandos(operacion)?.controls?.length">
+                                                                <div class="input-group" *ngIf="operando.get('operando')?.disabled">
+                                                                    <input type="text" readonly class="form-control-plaintext operation-text m-auto align-middle text-center" aria-label="Disabled input example" formControlName="operando">
+                                                                </div>
+                                                                <input type="text" class="form-control operation-text m-auto align-middle p-1" formControlName="operando" *ngIf="!operando.get('operando')?.disabled">
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                        <div class = "col-lg-6 result-box" *ngIf="esCorregido">
+                                            <ng-container formArrayName="respuestas">
+                                                <div class = "row-lg-auto d-flex">
+                                                    <div class="col-lg-3">
+                                                        <p class="mt-4 operation-text">+</p>
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <div class="row-lg-auto text-center me-2" *ngFor="let respuesta of getRespuestas(operacion)?.controls;index as n">
+                                                            <ng-container [formGroupName]="n">
+                                                                <hr class="separator-text" *ngIf="(n+1) == getRespuestas(operacion)?.controls?.length">
+                                                                <div class="input-group" *ngIf="!respuesta.get('resultado')?.disabled">
+                                                                    <input type="text" readonly class="form-control-plaintext acierto-text m-auto align-middle text-center" aria-label="Disabled input example" formControlName="resultado">
+                                                                </div>
+                                                                <div class="input-group" *ngIf="respuesta.get('resultado')?.disabled">
+                                                                    <input type="text" readonly class="form-control-plaintext fallo-text m-auto align-middle text-center" aria-label="Disabled input example" formControlName="resultado">
+                                                                </div>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                </div>   
+                                            </ng-container>
+                                        </div>
+                                    </ng-container>
+                                </div>
                             </div>
                         </ng-container>
                     </div>

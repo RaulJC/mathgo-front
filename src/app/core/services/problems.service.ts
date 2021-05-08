@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { UtilidadesService } from './utilidades.service';
 import { API_PROBLEMAS } from '../../shared/constantes/api';
-import { HttpClient, HttpErrorResponse  } from '@angular/common/http';
-import { IProblema } from 'src/app/shared/interfaces/interfaces';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams  } from '@angular/common/http';
+import { IEnviarSolucionRequest, IProblema, IProblemaResponse } from 'src/app/shared/interfaces/interfaces';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -13,21 +13,38 @@ export class ProblemsService {
 
   baseUrl = this.utilidades.getApiUrl();
   problemasUrl = this.baseUrl + API_PROBLEMAS;
-  problema: IProblema;
+  problema: IProblemaResponse;
 
   constructor(private utilidades: UtilidadesService, private http: HttpClient) { }
 
-  obtenerProblemas(): Observable<IProblema>{
+  obtenerProblemas(tipoProblema:string): Observable<IProblemaResponse>{
 
-    return this.http.get<IProblema>(this.problemasUrl, {observe: "response", responseType: "json"})
+    const headers = new HttpHeaders().set("X-CustomHeader", "custom header value")
+      .append('Content-Type', 'application/json')
+      .append('Accept', 'application/json')
+      .append('Authorization',  `Bearer ${localStorage.getItem('id_token')}`);
+
+    let params: HttpParams = new HttpParams();
+    params = params.append('tipoProblema',tipoProblema.toString());
+
+    return this.http.get<IProblemaResponse>(this.problemasUrl, {headers: headers, observe: "response", params:params, responseType: "json"})
       .pipe(
         map(response =>{
-          this.problema = response.body as IProblema;
+          this.problema = response.body as IProblemaResponse;
           return this.problema;
         }),
         catchError(this.handleError)
       );
       
+  }
+
+  enviarSolucion(enviarSolucionRequest: IEnviarSolucionRequest) {
+    const headers = new HttpHeaders().set("X-CustomHeader", "custom header value")
+      .append('Content-Type', 'application/json')
+      .append('Accept', 'application/json')
+      .append('Authorization',  `Bearer ${localStorage.getItem('id_token')}`);
+
+    this.http.post(this.problemasUrl,enviarSolucionRequest,{headers:headers}).subscribe();
   }
 
   private handleError(error: HttpErrorResponse) {

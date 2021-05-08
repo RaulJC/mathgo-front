@@ -1,8 +1,9 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { ProblemsService } from 'src/app/core/services/problems.service';
-import { IProblema } from 'src/app/shared/interfaces/interfaces';
+import { IEnviarSolucionRequest, IProblema } from 'src/app/shared/interfaces/interfaces';
 
 
 @Component({
@@ -32,9 +33,14 @@ export class ProblemasComponent implements OnInit {
   ejercicios = this.problemaForm.get('ejercicios') as FormArray;
   
   constructor(private problemasService : ProblemsService) {   
-    this.problemasService.obtenerProblemas().subscribe(problema =>{
-      this.problemaActual = problema; 
-      problema.ejercicios.map(ejercicio =>{
+
+  }
+
+  ngOnInit(): void {
+    let problema:string = this.tipoProblema as string;
+    this.problemasService.obtenerProblemas(problema).subscribe(problema =>{
+      this.problemaActual = problema.problema; 
+      this.problemaActual.ejercicios.map(ejercicio =>{
         let  ejercicioF = new FormGroup({
           enunciado : new FormControl({value:ejercicio.enunciado,disabled : true}),
           operaciones: new FormArray([])
@@ -74,10 +80,6 @@ export class ProblemasComponent implements OnInit {
 
     this.inicio = new Date(Date.now());
   }
-
-  ngOnInit(): void {
-  
-  }
  
   onSubmit(){
     this.fin = new Date(Date.now());
@@ -104,6 +106,14 @@ export class ProblemasComponent implements OnInit {
     var diferencia = Math.abs(this.fin.getSeconds() - this.inicio.getSeconds());
     this.minutos = Math.floor(diferencia / 60);
     this.segundos = diferencia - this.minutos*60;
+    let fallos = this.total - this.aciertos;
+    let requestSolucion: IEnviarSolucionRequest = {
+      problema:this.problemaActual,
+      tipo:this.tipoProblema.toString(),
+      nAciertos:this.aciertos,
+      nFallos: fallos
+    }
+    this.problemasService.enviarSolucion(requestSolucion);
   }
 
   getEjercicios(abstractEjercicio:AbstractControl){

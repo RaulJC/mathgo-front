@@ -11,7 +11,7 @@ import { DateService } from './date.service';
 export class AuthenticationService {
 
   constructor(private http:HttpClient, private dateService: DateService) { }
-
+  
   login(username: string, password: string): Observable<JwtResponse> {
     let jwtRequest: JwtRequest = { username: username, password: password };
 

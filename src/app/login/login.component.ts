@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  registro: boolean = true;
+  
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  cargarFormularioRegistro(){
+    this.registro = true;
+  }
+
+  cargarFormularioLogin(){
+    this.registro = false;
+  }
 }

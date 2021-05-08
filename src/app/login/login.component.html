@@ -1,12 +1,22 @@
 <div class="container mt-5">
     <div class="row mb-4">
         <div class="col-lg-4 mx-auto">
-            <app-formulario></app-formulario>
+            <app-formulario *ngIf="!registro"></app-formulario>
+            <app-registro *ngIf="registro"></app-registro>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="!registro">
         <div class="col-lg-4 m-auto align-middle">
-            <app-invitado></app-invitado>
+            <div class="container text-center cnt-style py-3">
+                <p class="mb-0 ">¿Todavía no tienes cuenta? <a class="link-color" (click)="cargarFormularioRegistro()">¡Registrate ahora!</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="registro">
+        <div class="col-lg-4 m-auto align-middle">
+            <div class="container text-center cnt-style py-3">
+                <p class="mb-0 ">¿Ya tienes cuenta? <a class="link-color" (click)="cargarFormularioLogin()">¡Inicia sesión ahora!</a></p>
+            </div>
         </div>
     </div>
 </div>

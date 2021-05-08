@@ -16,17 +16,24 @@ export interface JwtResponse{
 export interface IProblema{
     ejercicios: IEjercicio[];
 }
+export interface IProblemaResponse{
+    problema: IProblema;
+}
+export interface IEnviarSolucionRequest{
+    problema: IProblema;
+    tipo: string;
+    nAciertos: number;
+    nFallos: number;
+}
 export interface IEjercicio{
     enunciado: String;
     operaciones: IOperacion[];
 }
-
 export interface IOperacion{
     tipo: String;
     operandos: String[];
     resultado: string[];
 }
-
 export interface Credenciales{
     email: String;
     password: String;

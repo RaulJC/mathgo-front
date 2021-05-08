@@ -19,6 +19,14 @@
     border-top: none;
 }
 
+.result-box{
+    border: solid;
+    border-width: 1px;
+    border-bottom: none;
+    border-top: none;
+    border-left: none;
+}
+
 .operation-text{
     font-size: 1.5rem;
     resize: none;
@@ -39,8 +47,9 @@
 }
 
 .separator-text{
-    font-size: 1.5rem;
-    resize: none;
+    height: 0.1rem;
+    border-color: black;
+    opacity: 1;
 }
 
 .exercise-btn{
