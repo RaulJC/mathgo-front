@@ -4,6 +4,20 @@ export interface IUser{
     authorityNames: string[];
     rol: string;
 }
+export interface IUsuario{
+    id?: number;
+    nombre: string;
+    password: string;
+    username: string;
+    edad: number;
+    rol: string;
+}
+export interface IRegistrarUsuarioRequest{
+    usuario: IUsuario;
+}
+export interface IRegistrarUsuarioResponse{
+    response: string;
+}
 export interface JwtRequest{
     username: string;
     password: string;

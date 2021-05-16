@@ -1,0 +1,17 @@
+.add-btn{
+    background-color: #9DD41D;
+    color: white;
+}
+
+.add-btn:hover{
+    background-color: #79a317;
+}
+
+.back-btn{
+    color: white;
+    background-color: #C31E25;
+}
+
+.back-btn:hover{
+    background-color: #af1b23;
+}

@@ -1,1 +1,59 @@
-<p>teachers works!</p>
+<app-navbar></app-navbar>
+<div class="container-fluid" *ngIf="componente === 'grupos'">
+    <div class="row row-lg-12 my-2">
+        <div class="col col-lg-12">
+            <p class="h3">Tus grupos</p>
+            <hr class="grupos-divider">
+        </div>
+    </div>
+    <div class="row row-lg-12 text-center justify-content-center">
+        <div class="col col-lg-8">
+            <div class="card card-style">
+                <h5 class="card-header text-start header-style">Colegio Mirasierra - 1ºC</h5>
+                <div class="card-body text-end">
+                  <p class="card-text text-start">Problemas de matemáticas, temática deportes.</p>
+                  <button type="submit" class="btn add-btn me-2 text-end" (click)="seleccionarGrupo()">Editar grupo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-lg-12 justify-content-center">
+        <div class="col col-lg-8">
+            <button type="submit" class="btn group-btn mt-4 d-flex">
+                <i class="bi bi-plus plus-style align-middle"></i>
+                <p class="text align-self-center mb-0">Añadir grupo</p>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" *ngIf="componente === 'editor'">
+    <div class="row row-lg-12 my-2">
+        <div class="col col-lg-12">
+            <div class="row row-lg-12">
+                <div class="col col-lg-10">
+                    <p class="h3 text-start">Plantilla del Grupo 1ºC</p>
+                </div>
+                <div class="col col-lg-2 text-end">
+                    <button type="submit" class="btn back-btn me-2" (click)="volverMisGrupos()">Volver a mis grupos</button>
+                </div>                
+            </div>
+            <hr class="divider">
+        </div>
+    </div>
+    <div class="row row-lg-12">
+        <div class="col col-lg-6 mt-2">
+            <app-generador (enunciado)="generarEnunciado($event)" (problema)="generarProblema($event)"></app-generador>
+        </div>
+        <div class="col col-lg-6 mt-2">
+            <app-codigo [nuevoItem] = "enunciado" [nuevoProblema] = "problema"></app-codigo>
+        </div>
+    </div>
+    <div class="row row-lg-12 text-center justify-content-center">
+        <div class="col col-lg-3 mt-2">
+            <button type="submit" class="btn add-btn me-2">Guardar plantilla</button>
+            <button type="submit" class="btn add-btn me-2">Insertar datos</button>
+        </div>
+    </div>
+</div>
+

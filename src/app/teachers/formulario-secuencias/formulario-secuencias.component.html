@@ -1,0 +1,45 @@
+<form [formGroup]="secuenciasForm" (ngSubmit)="onSubmit()">
+    <fieldset class="login-fields">
+      <div class="row row-lg-12">
+        <div class="col col-lg-6">
+            <label class="form-label text-label">Tipo:</label>
+            <select class="form-select" aria-label="Default select example" formControlName="tipo">
+                <option selected>Elija el tipo de secuencia</option>
+                <option value="0">Mostrar valor aleatorio</option>
+                <option value="1">Mostrar primer valor</option>
+                <option value="2">Mostrar último valor</option>
+                <option value="3">Mostrar primer y último valor</option>
+            </select>
+        </div>
+        <div class="col col-lg-3">
+            <div class="mb-3">
+                <label class="form-label text-label">Número de items:</label>
+                <input type="text" id="textInput" class="form-control" formControlName="nbitems">
+              </div>
+        </div>
+        <div class="col col-lg-3">
+            <div class="mb-3">
+                <label class="form-label text-label">Cantidad de secuencias:</label>
+                <input type="text" id="textInput" class="form-control" formControlName="cantidad">
+            </div>
+        </div>
+      </div>
+      <div class="row row-lg-12 mb-3">
+        <div class="col col-lg-6 mb-3">
+            <div class="mb-3">
+                <label class="form-label text-label">Valor mínimo posible:</label>
+                <input type="text" id="textInput" class="form-control" formControlName="geq">
+              </div>
+        </div>
+        <div class="col col-lg-6 mb-3">
+            <div class="mb-3">
+                <label class="form-label text-label">Valor máximo posible:</label>
+                <input type="text" id="textInput" class="form-control" formControlName="leq">
+              </div>
+        </div>
+      </div>
+      <div class="row-lg-auto text-center">
+        <button type="submit" class="btn add-btn">Añadir problema</button>
+      </div>
+    </fieldset>
+</form>

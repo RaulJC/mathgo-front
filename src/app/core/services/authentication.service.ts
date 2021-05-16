@@ -1,21 +1,42 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { JwtRequest, JwtResponse } from 'src/app/shared/interfaces/interfaces';
-import { tap, shareReplay } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { IRegistrarUsuarioRequest, IRegistrarUsuarioResponse, JwtRequest, JwtResponse } from 'src/app/shared/interfaces/interfaces';
+import { tap, shareReplay, catchError, map } from 'rxjs/operators';
 import { DateService } from './date.service';
+import { UtilidadesService } from './utilidades.service';
+import { API_AUTENTICACION, API_REGISTRO } from '../../shared/constantes/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(private http:HttpClient, private dateService: DateService) { }
+  baseUrl = this.utilidades.getApiUrl();
+  authenticationUrl = this.baseUrl + API_AUTENTICACION;
+  registerUrl = this.baseUrl + API_REGISTRO;
+  registerResponse : IRegistrarUsuarioResponse;
+
+  constructor(
+    private http:HttpClient, 
+    private dateService: DateService,
+    private utilidades: UtilidadesService) { }
+  
+  registrarUsuario(registroRequest: IRegistrarUsuarioRequest): Observable<IRegistrarUsuarioResponse>{
+    return this.http.post<IRegistrarUsuarioResponse>(this.registerUrl,registroRequest,{observe: "response", responseType: "json"})
+      .pipe(
+        map(response =>{
+          this.registerResponse = response.body as IRegistrarUsuarioResponse;
+          return this.registerResponse;
+        }),
+        catchError(this.handleError)
+      );
+  }
   
   login(username: string, password: string): Observable<JwtResponse> {
     let jwtRequest: JwtRequest = { username: username, password: password };
 
-    return this.http.post<JwtResponse>('http://localhost:8080/api/v1/authenticate',
+    return this.http.post<JwtResponse>(this.authenticationUrl,
         jwtRequest).pipe(
             tap((resp: JwtResponse) => this.setSession(resp)),
             shareReplay()
@@ -51,4 +72,19 @@ export class AuthenticationService {
       return expiresAt;
   }  
 
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(
+      'Something bad happened; please try again later.');
+  }
 }

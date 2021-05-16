@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PuzzleComponent implements OnInit {
 
-  msg: String;
-
   constructor() { }
 
   ngOnInit(): void {

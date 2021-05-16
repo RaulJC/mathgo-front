@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { IRegistrarUsuarioRequest } from 'src/app/shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-registro',
@@ -16,12 +18,27 @@ export class RegistroComponent implements OnInit {
     rol: new FormControl('Selecciona tu rol')
   });
 
-  constructor() { }
+  alertMsg : string;
+
+  constructor(private auth: AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    console.log(this.registerForm.value);
+  
+    let registroRequest: IRegistrarUsuarioRequest = {
+      usuario : {
+        nombre: this.registerForm.controls.nombre.value,
+        edad: this.registerForm.controls.edad.value,
+        username: this.registerForm.controls.username.value,
+        password: this.registerForm.controls.password.value,
+        rol: this.registerForm.controls.username.value
+      }
+    }
+    this.auth.registrarUsuario(registroRequest).subscribe(response =>{
+      this.alertMsg = response.response;
+    });
   }
+
 }

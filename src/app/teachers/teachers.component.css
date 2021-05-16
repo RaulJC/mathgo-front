@@ -1,0 +1,56 @@
+.grupos-divider{
+    height: 4px;
+    background-color: #9DD41D;
+    border:none;
+    opacity: 0.7;
+}
+
+.divider{
+    height: 2px;
+    background-color: #212529;
+    border:none;
+    opacity: 1;
+}
+
+.card-style{
+    border-radius: 1rem;
+}
+
+.header-style{
+    background-color: white;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.add-btn{
+    background-color: #9DD41D;
+    color: white;
+}
+
+.add-btn:hover{
+    background-color: #79a317;
+}
+
+.back-btn{
+    color: white;
+    background-color: #C31E25;
+}
+
+.back-btn:hover{
+    background-color: #af1b23;
+}
+
+.group-btn{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-right: 7rem;
+    padding-left: 7rem;
+    border-radius: 8px;
+    border: dashed 2px #a7a6a6;
+}
+
+.plus-style{
+    color:#9DD41D;
+    font-size: 3rem;
+}
+

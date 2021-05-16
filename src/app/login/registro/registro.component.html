@@ -4,6 +4,9 @@
     </div>
     <legend class="text-center">Registrate en MathGo</legend>
     <fieldset class="login-fields p-5">
+      <div class="alert alert-danger" role="alert" *ngIf="alertMsg != null">
+        {{alertMsg}}
+      </div>
       <div class="mb-3">
         <label class="form-label text-label">¿Que rol vas a desempeñar?</label>
         <select class="form-select form-select-mb mb-3" aria-label=".form-select-mb example" formControlName="rol">

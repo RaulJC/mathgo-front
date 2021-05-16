@@ -1,0 +1,18 @@
+.tittle{
+    font-weight: bold;
+}
+
+.img-wrapper img {
+    width: 100%;
+}
+
+.img-wrapper{
+    cursor: pointer;
+    width: 100%;
+    -webkit-transition: width 0.8s, height 0.8s;
+    transition: width 0.8s, height 0.8s;
+}
+
+.img-wrapper:hover{
+    width: 110%;
+}
