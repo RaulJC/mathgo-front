@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<!--GRUPOS DEL USUARIO ACTUAL -->
 <div class="container-fluid" *ngIf="componente === 'grupos'">
     <div class="row row-lg-12 my-2">
         <div class="col col-lg-12">
@@ -26,7 +27,7 @@
         </div>
     </div>
 </div>
-
+<!--EDITOR TEMPLATE DEL USUARIO Y GRUPO SELECCIONADOS -->
 <div class="container-fluid" *ngIf="componente === 'editor'">
     <div class="row row-lg-12 my-2">
         <div class="col col-lg-12">
@@ -35,7 +36,7 @@
                     <p class="h3 text-start">Plantilla del Grupo 1ºC</p>
                 </div>
                 <div class="col col-lg-2 text-end">
-                    <button type="submit" class="btn back-btn me-2" (click)="volverMisGrupos()">Volver a mis grupos</button>
+                    <button type="submit" class="btn back-btn me-2" (click)="volverMisGrupos()"><i class="bi bi-door-open-fill"></i> Volver a mis grupos</button>
                 </div>                
             </div>
             <hr class="divider">
@@ -51,9 +52,46 @@
     </div>
     <div class="row row-lg-12 text-center justify-content-center">
         <div class="col col-lg-3 mt-2">
-            <button type="submit" class="btn add-btn me-2">Guardar plantilla</button>
-            <button type="submit" class="btn add-btn me-2">Insertar datos</button>
+            <button type="submit" class="btn add-btn me-2"><i class="bi bi-file-earmark-text"></i> Guardar plantilla</button>
+            <button type="submit" class="btn add-btn me-2" (click)="seleccionarDatos()"><i class="bi bi-arrow-right-circle"></i> Insertar datos</button>
         </div>
     </div>
 </div>
-
+<!-- CARGA DE DATOS -->
+<div class="container-fluid" *ngIf="componente === 'datos'">
+    <div class="row row-lg-12 my-2">
+        <div class="col col-lg-12">
+            <div class="row row-lg-12">
+                <div class="col col-lg-10">
+                    <p class="h3 text-start">Datos del Grupo 1ºC</p>
+                </div>
+                <div class="col col-lg-2 text-end">
+                    <button type="submit" class="btn back-btn me-2" (click)="seleccionarGrupo()"><i class="bi bi-door-open-fill"></i> Volver al editor</button>
+                </div>                
+            </div>
+            <hr class="divider">
+        </div>
+    </div>
+    <div class="row row-lg-12 my-2">
+        <div class="col col-lg-auto">
+            <button type="submit" class="btn add-btn me-2" (click)="crearFila()"><i class="bi bi-plus-circle"></i> Añadir fila</button>
+            <button type="submit" class="btn back-btn me-2" (click)="borrarFila()"><i class="bi bi-x-circle"></i> Eliminar selección</button>
+        </div> 
+    </div>
+    <table class="table mt-2">
+        <thead class="table-header-theme">
+          <tr >
+                <th scope="col" class="th-theme">#</th>
+                <th scope="col" class="th-theme" *ngFor="let variable of variables;">{{variable}}</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let tupla of datos;index as i">
+                <th scope="row"><input class="form-check-input" type="checkbox" id="{{i}}" value="option1" (change)="onCheckboxChange(i)"></th>
+                <td *ngFor="let valor of tupla;index as j;trackBy:customTrackBy">
+                    <input type="text" id="j" class="form-control table-input" [(ngModel)]="datos[i][j]">
+                </td>
+            </tr>
+        </tbody>
+      </table>
+</div>
