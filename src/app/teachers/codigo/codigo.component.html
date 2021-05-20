@@ -1,11 +1,12 @@
 <div class="row row-lg-12">
   <div class="col col-lg-12 mb-3" >
-    <div class="container code-style">
+    <div class="container code-style" *ngIf="grupoSeleccionado != null">
       <ngx-codemirror
         [options]="options"
-        [(ngModel)]="value"
+        [(ngModel)]="grupoSeleccionado.masterfile"
         [disabled]="readOnly"
         [autoFocus]="true"
+        (ngOnChange)="refrescarValores($event)"
         ></ngx-codemirror>
     </div>
   </div>

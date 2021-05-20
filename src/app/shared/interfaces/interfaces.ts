@@ -52,3 +52,32 @@ export interface Credenciales{
     email: String;
     password: String;
 }
+export interface IGrupo{
+    id: number;
+    titulo: string;
+    descripcion: string;
+    masterfile: string;
+    variables: string[];
+    datos: string[][];
+}
+export interface ICrearGrupoRequest{
+    grupo: IGrupo;
+}
+export interface ICrearGrupoResponse{
+    grupo: IGrupo;
+}
+export interface IActualizarGrupoRequest{
+    grupo: IGrupo;
+}
+export interface IActualizarGrupoResponse{
+    grupo: IGrupo;
+}
+export interface IObetenerGrupoResponse{
+    grupo: IGrupo;
+}
+export interface IObetenerGruposResponse{
+    grupos: IGrupo[];
+}
+export interface IEliminarGrupoResponse{
+    esEliminado: boolean;
+}

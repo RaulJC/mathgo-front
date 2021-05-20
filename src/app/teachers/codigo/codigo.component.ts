@@ -1,8 +1,10 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ProblemSharingService } from 'src/app/core/services/problem-sharing.service';
+import { IGrupo } from 'src/app/shared/interfaces/interfaces';
 
 const defaults = {
   stex:
-    '\\usepackage[T1]{fontenc}\n'
+    ''
 };
 
 @Component({
@@ -16,14 +18,17 @@ export class CodigoComponent implements OnInit, OnChanges {
   mode: keyof typeof defaults = 'stex';
   @Input() nuevoItem : string;
   @Input() nuevoProblema : string;
-  value : string = '\\usepackage[T1]{fontenc}\n';
+  @Input() grupoSeleccionado : IGrupo;
+
   options = {
     lineNumbers: true,
     mode: this.mode,
   };
   defaults = defaults;
 
-  constructor() { }
+  constructor(private problemSharingService:ProblemSharingService) { 
+
+  }
   
   ngOnChanges(changes: SimpleChanges) {
     for (const propName in changes) {
@@ -47,7 +52,11 @@ export class CodigoComponent implements OnInit, OnChanges {
   }
 
   add(data:string){
-    this.value = this.value.concat(data)
+    this.grupoSeleccionado.masterfile = this.grupoSeleccionado.masterfile.concat(data);
+    this.problemSharingService.setProblemaActual(this.grupoSeleccionado);
   }
 
+  refrescarValores(event:any){
+    console.log(event);
+  }
 }

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { GroupsService } from '../core/services/groups.service';
+import { ProblemSharingService } from '../core/services/problem-sharing.service';
+import { IGrupo } from '../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-teachers',
@@ -7,19 +11,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeachersComponent implements OnInit {
 
-  componente: string = "datos";
+  grupos: IGrupo[];
+  grupoSeleccionado : IGrupo;
+  componente: string = "grupos";
   filasSeleccionadas : number[] = [];
   enunciado : string;
   problema : string;
-  variables: string[] = ["Nombre","Hermano","Profesion"];
-  datos : string[][] = [
-    ["Raul","Pedro","bombero"],
-    ["Pedro","Raul","astronauta"],
-    ["Clara","","física"]
-  ]; 
-  constructor() { }
+  variables: string[];
+  datos : string[][];
+  guardando: boolean = false;
+
+  crearGrupoForm: FormGroup = new FormGroup({
+    titulo: new FormControl(''),
+    descripcion: new FormControl('')
+  });
+
+  constructor(private grupoService: GroupsService, private problemSharingService: ProblemSharingService) { }
 
   ngOnInit(): void {
+    this.grupoService.obtenerGrupos().subscribe(response=>{
+      this.grupos = response.grupos;
+    })
+  }
+
+  crearGrupo(){
+    let titulo : string = this.crearGrupoForm.controls.titulo.value;
+    let descripcion : string = this.crearGrupoForm.controls.descripcion.value;
+    let nuevoGrupo :IGrupo ={id:0,titulo:titulo,descripcion:descripcion,masterfile:"",variables:[],datos:[]};
+    this.grupoService.crearGrupo(nuevoGrupo).subscribe(response=>{
+      this.grupos.push(response.grupo);
+      this.crearGrupoForm.reset();
+    })
   }
 
   generarEnunciado(event:any){
@@ -30,16 +52,48 @@ export class TeachersComponent implements OnInit {
     this.problema = event;
   }
 
-  seleccionarGrupo(){
+  seleccionarGrupo(idGrupo:number){
     this.componente = "editor";
+    this.grupoService.obtenerGrupo(idGrupo).subscribe(response=>{
+      this.grupoSeleccionado = response.grupo;
+      this.problemSharingService.setProblemaActual(this.grupoSeleccionado);
+    })
+    
+  }
+  
+  eliminarGrupo(grupo:IGrupo){
+      this.grupoService.eliminarGrupo(grupo.id).subscribe(response=>{
+        if(response.esEliminado){
+          var index = this.grupos.indexOf(grupo);
+          this.grupos.splice(index,1)
+        } ;
+      })
+  }
+
+  guardarPlantilla(move:boolean){
+    this.guardando = true;
+    this.problemSharingService.getProblemaActual().subscribe(problema=>{
+      this.grupoService.guardarGrupo(problema).subscribe(response=>{
+        this.problemSharingService.setProblemaActual(response.grupo);
+        this.grupoSeleccionado = response.grupo;
+        setTimeout(()=>{
+          this.guardando = false;
+          if(move) this.componente = "datos";
+        },1000);
+      });
+    }).unsubscribe();
   }
 
   seleccionarDatos(){
-    this.componente = "datos";
+    this.guardarPlantilla(true);
   }
 
   volverMisGrupos(){
     this.componente = "grupos";
+  }
+
+  volverEditor(){
+    this.componente = "editor";
   }
 
   onCheckboxChange(numero:number){
@@ -57,15 +111,15 @@ export class TeachersComponent implements OnInit {
 
   crearFila(){
     let nuevaFila:string[] = [];
-    this.variables.forEach(variable=>{
+    this.grupoSeleccionado.variables.forEach(variable=>{
       nuevaFila.push("");
     });
-    this.datos.push(nuevaFila);
+    this.grupoSeleccionado.datos.push(nuevaFila);
   }
 
   borrarFila(){
     this.filasSeleccionadas.forEach(indice=>{
-      this.datos.splice(indice,1);
+      this.grupoSeleccionado.datos.splice(indice,1);
     });
     this.filasSeleccionadas = [];
   }
