@@ -30,10 +30,10 @@ export class RegistroComponent implements OnInit {
     let registroRequest: IRegistrarUsuarioRequest = {
       usuario : {
         nombre: this.registerForm.controls.nombre.value,
-        edad: this.registerForm.controls.edad.value,
+        edad: (0 + this.registerForm.controls.edad.value),
         username: this.registerForm.controls.username.value,
         password: this.registerForm.controls.password.value,
-        rol: this.registerForm.controls.username.value
+        rol: this.registerForm.controls.rol.value
       }
     }
     this.auth.registrarUsuario(registroRequest).subscribe(response =>{

@@ -17,7 +17,7 @@ export class ProblemsService {
 
   constructor(private utilidades: UtilidadesService, private http: HttpClient) { }
 
-  obtenerProblemas(tipoProblema:string): Observable<IProblemaResponse>{
+  obtenerProblemas(tipoProblema:string,nivelProblema:string): Observable<IProblemaResponse>{
 
     const headers = new HttpHeaders().set("X-CustomHeader", "custom header value")
       .append('Content-Type', 'application/json')
@@ -26,7 +26,7 @@ export class ProblemsService {
 
     let params: HttpParams = new HttpParams();
     params = params.append('tipoProblema',tipoProblema.toString());
-
+    params = params.append('nivel',nivelProblema.toString());
     return this.http.get<IProblemaResponse>(this.problemasUrl, {headers: headers, observe: "response", params:params, responseType: "json"})
       .pipe(
         map(response =>{

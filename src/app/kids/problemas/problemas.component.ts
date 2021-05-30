@@ -37,8 +37,7 @@ export class ProblemasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let problema:string = this.tipoProblema as string;
-    this.problemasService.obtenerProblemas(problema).subscribe(problema =>{
+    this.problemasService.obtenerProblemas(this.tipoProblema as string,this.nivel as string).subscribe(problema =>{
       this.problemaActual = problema.problema; 
       this.problemaActual.ejercicios.map(ejercicio =>{
         let  ejercicioF = new FormGroup({

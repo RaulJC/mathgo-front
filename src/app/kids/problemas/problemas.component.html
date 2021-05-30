@@ -3,19 +3,19 @@
         <ng-container formArrayName="ejercicios">
             <div class= "container py-3" *ngFor="let ejercicio of ejercicios.controls;index as i">
                 <ng-container [formGroupName]="i">
-                    <div class="row-lg-auto">
+                    <div class="row row-lg-12">
                         <div class="input-group">
                             <textarea type="text" readonly class="form-control-plaintext enunciado"  aria-label="Disabled input example" formControlName="enunciado"></textarea>
                         </div>
                     </div>
-                    <div class="row row-lg-auto justify-content-lg-center">
+                    <div class="row row-lg-12">
                         <!-- Plantilla para problemas de secuencias -->
                         <ng-container formArrayName="operaciones" *ngIf= "tipoProblema == 'secuencias'">
-                            <div class="col col-lg-3 d-inline-block m-1 px-1 operand-box" *ngFor="let operacion of getOperaciones(ejercicio)?.controls;index as j">
+                            <div class="col col-lg-4 m-1 mx-0 p-3 operand-box" *ngFor="let operacion of getOperaciones(ejercicio)?.controls;index as j">
                                 <ng-container [formGroupName]="j">
-                                    <div class = "row-lg-auto d-flex">
+                                    <div class = "row row-lg-12">
                                         <ng-container formArrayName="operandos">
-                                            <div class="col-lg-3 text-center d-flex me-2" *ngFor="let operando of getOperandos(operacion)?.controls;index as m">
+                                            <div class="col text-center me-0 px-1" *ngFor="let operando of getOperandos(operacion)?.controls;index as m">
                                                 <ng-container [formGroupName]="m">
                                                     <div class="input-group" *ngIf="operando.get('operando')?.disabled">
                                                         <input type="text" readonly class="form-control-plaintext operation-text m-auto align-middle text-center" aria-label="Disabled input example" formControlName="operando">
@@ -25,9 +25,9 @@
                                             </div>
                                         </ng-container>
                                     </div>
-                                    <div class = "row-lg-auto d-flex" *ngIf="esCorregido">
+                                    <div class = "row row-lg-12" *ngIf="esCorregido">
                                         <ng-container formArrayName="respuestas">
-                                            <div class="col-lg-3 text-center d-flex me-2" *ngFor="let respuesta of getRespuestas(operacion)?.controls;index as n">
+                                            <div class="col text-center me-0 px-1" *ngFor="let respuesta of getRespuestas(operacion)?.controls;index as n">
                                                 <ng-container [formGroupName]="n">
                                                     <div class="input-group" *ngIf="!respuesta.get('resultado')?.disabled">
                                                         <input type="text" readonly class="form-control-plaintext acierto-text m-auto align-middle text-center" aria-label="Disabled input example" formControlName="resultado">
@@ -44,17 +44,19 @@
                         </ng-container>
                         <!-- Plantilla para problemas de sumas, restas, multiplicaciones y divisiones -->
                         <ng-container formArrayName="operaciones" *ngIf= "tipoProblema != 'secuencias'">
-                            <div class="col col-lg-3 d-inline-block m-1 px-1" *ngFor="let operacion of getOperaciones(ejercicio)?.controls;index as j">
-                                <div class="row row-lg-auto d-flex">
+                            <div class="col col-lg-3 d-inline-block px-1 mb-2" *ngFor="let operacion of getOperaciones(ejercicio)?.controls;index as j">
+                                <div class="row row-lg-auto d-flex justify-content-center">
                                     <ng-container [formGroupName]="j">
-                                        <div class = "col-lg-6">
+                                        <div class = "col col-lg-6">
                                             <ng-container formArrayName="operandos">
-                                                <div class = "row-lg-auto d-flex">
-                                                    <div class="col-lg-3">
-                                                        <p class="mt-4 operation-text text-center">+</p>
+                                                <div class = "row row-lg-auto d-flex">
+                                                    <div class="col col-lg-3">
+                                                        <p class="mt-4 operation-text text-center" *ngIf= "tipoProblema == 'sumas'">+</p>
+                                                        <p class="mt-4 operation-text text-center" *ngIf= "tipoProblema == 'restas'">-</p>
+                                                        <p class="mt-4 operation-text text-center" *ngIf= "tipoProblema == 'multiplicaciones'">x</p>
                                                     </div>
-                                                    <div class="col-lg-9">
-                                                        <div class="row-lg-auto text-center me-2" *ngFor="let operando of getOperandos(operacion)?.controls;index as m">
+                                                    <div class="col col-lg-9">
+                                                        <div class="row row-lg-auto text-center me-2 p-2" *ngFor="let operando of getOperandos(operacion)?.controls;index as m">
                                                             <ng-container [formGroupName]="m">
                                                                 <hr class="separator-text" *ngIf="(m+1) == getOperandos(operacion)?.controls?.length">
                                                                 <div class="input-group" *ngIf="operando.get('operando')?.disabled">
@@ -67,14 +69,16 @@
                                                 </div>
                                             </ng-container>
                                         </div>
-                                        <div class = "col-lg-6 result-box" *ngIf="esCorregido">
+                                        <div class = "col col-lg-6 result-box" *ngIf="esCorregido">
                                             <ng-container formArrayName="respuestas">
-                                                <div class = "row-lg-auto d-flex">
-                                                    <div class="col-lg-3">
-                                                        <p class="mt-4 operation-text">+</p>
+                                                <div class = "row row-lg-auto d-flex">
+                                                    <div class="col col-lg-3">
+                                                        <p class="mt-4 operation-text text-center" *ngIf= "tipoProblema == 'sumas'">+</p>
+                                                        <p class="mt-4 operation-text text-center" *ngIf= "tipoProblema == 'restas'">-</p>
+                                                        <p class="mt-4 operation-text text-center" *ngIf= "tipoProblema == 'multiplicaciones'">x</p>
                                                     </div>
-                                                    <div class="col-lg-9">
-                                                        <div class="row-lg-auto text-center me-2" *ngFor="let respuesta of getRespuestas(operacion)?.controls;index as n">
+                                                    <div class="col col-lg-9">
+                                                        <div class="row row-lg-auto text-center me-2 p-2" *ngFor="let respuesta of getRespuestas(operacion)?.controls;index as n">
                                                             <ng-container [formGroupName]="n">
                                                                 <hr class="separator-text" *ngIf="(n+1) == getRespuestas(operacion)?.controls?.length">
                                                                 <div class="input-group" *ngIf="!respuesta.get('resultado')?.disabled">

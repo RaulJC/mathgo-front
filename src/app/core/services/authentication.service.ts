@@ -23,6 +23,7 @@ export class AuthenticationService {
     private utilidades: UtilidadesService) { }
   
   registrarUsuario(registroRequest: IRegistrarUsuarioRequest): Observable<IRegistrarUsuarioResponse>{
+    if(registroRequest.usuario.edad == null) registroRequest.usuario.edad = 0;
     return this.http.post<IRegistrarUsuarioResponse>(this.registerUrl,registroRequest,{observe: "response", responseType: "json"})
       .pipe(
         map(response =>{

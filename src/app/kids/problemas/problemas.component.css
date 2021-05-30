@@ -13,10 +13,8 @@
 }
 
 .operand-box{
-    border: solid;
-    border-width: 2px;
-    border-bottom: none;
-    border-top: none;
+    outline: 1px solid #D8DEE2;
+    outline-offset: -0.2em;
 }
 
 .result-box{

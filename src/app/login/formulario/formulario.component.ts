@@ -24,9 +24,13 @@ export class FormularioComponent implements OnInit {
   onSubmit(){
     let user$ = this.auth.login(this.loginForm.value.username,this.loginForm.value.password);
     user$.subscribe(
-      (data: any) => console.log(data),
+      (data: any) => {
+        console.log(data);
+        if(data.user.rol == 'KID') this.router.navigate(['/kids']);
+        if(data.user.rol == 'PROFESIONAL') this.router.navigate(['/teachers']);
+      },
       err => console.error(err),
     );
-    this.router.navigate(['/kids']);
+    
   }
 }
