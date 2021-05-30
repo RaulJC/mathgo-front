@@ -109,8 +109,8 @@ export class ProblemasComponent implements OnInit {
     let requestSolucion: IEnviarSolucionRequest = {
       problema:this.problemaActual,
       tipo:this.tipoProblema.toString(),
-      nAciertos:this.aciertos,
-      nFallos: fallos
+      aciertos:this.aciertos,
+      fallos: fallos
     }
     this.problemasService.enviarSolucion(requestSolucion);
   }

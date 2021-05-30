@@ -44,7 +44,7 @@
                         </ng-container>
                         <!-- Plantilla para problemas de sumas, restas, multiplicaciones y divisiones -->
                         <ng-container formArrayName="operaciones" *ngIf= "tipoProblema != 'secuencias'">
-                            <div class="col col-lg-3 d-inline-block px-1 mb-2" *ngFor="let operacion of getOperaciones(ejercicio)?.controls;index as j">
+                            <div class="col col-lg-3 d-inline-block p-3 mb-2 operand-box" *ngFor="let operacion of getOperaciones(ejercicio)?.controls;index as j">
                                 <div class="row row-lg-auto d-flex justify-content-center">
                                     <ng-container [formGroupName]="j">
                                         <div class = "col col-lg-6">

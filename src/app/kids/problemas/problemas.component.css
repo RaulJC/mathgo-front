@@ -17,14 +17,6 @@
     outline-offset: -0.2em;
 }
 
-.result-box{
-    border: solid;
-    border-width: 1px;
-    border-bottom: none;
-    border-top: none;
-    border-left: none;
-}
-
 .operation-text{
     font-size: 1.5rem;
     resize: none;

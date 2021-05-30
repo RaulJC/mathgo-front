@@ -36,8 +36,8 @@ export interface IProblemaResponse{
 export interface IEnviarSolucionRequest{
     problema: IProblema;
     tipo: string;
-    nAciertos: number;
-    nFallos: number;
+    aciertos: number;
+    fallos: number;
 }
 export interface IEjercicio{
     enunciado: String;
