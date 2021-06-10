@@ -35,15 +35,15 @@
             <label for="problema" class="form-label">Selecciona tu problema:</label>
             <select class="form-select" aria-label="tipo problema" [(ngModel)]="formulario">
                 <option selected>Tipo de problema</option>
-                <option value="Sumas">Sumas</option>
-                <option value="Restas">Restas</option>
                 <option value="Secuencias">Secuencias</option>
-                <option value="Multiplicaciones">Multiplicaciones</option>
-                <option value="Divisiones">Divisiones</option>
+                <option value="BasicOperation">Operaciones Básicas (sumas,retas,multiplicaciones)</option>
             </select>
         </div>
         <form *ngIf="formulario == 'Secuencias'">
             <app-formulario-secuencias (problema)="generarProblema($event)"></app-formulario-secuencias>
+        </form>
+        <form *ngIf="formulario == 'BasicOperation'">
+            <app-basic-operations-form (problema)="generarProblema($event)"></app-basic-operations-form>
         </form>
     </div>
 </div>

@@ -1,0 +1,47 @@
+<form [formGroup]="basicOperationForm" (ngSubmit)="onSubmit()">
+    <fieldset class="login-fields">
+      <div class="row row-lg-12 mb-3">
+        <div class="col col-lg-4">
+            <label class="form-label text-label">Tipo de operación:</label>
+            <select class="form-select" aria-label="Default select example" formControlName="operator">
+                <option value="" selected >Elija el tipo de operación básica</option>
+                <option value="+">Sumas</option>
+                <option value="-">Restas</option>
+                <option value="*">Multiplicaciones</option>
+            </select>
+        </div>
+        <div class="col col-lg-8">
+          <label class="form-label text-label">Tipo:</label>
+          <select class="form-select" aria-label="Default select example" formControlName="type">
+              <option value="0" selected>Se muestran todos los operandos, solo se tiene que dar el resultado</option>
+              <option value="1">Un operando se oculta y se debe adivinar el valor</option>
+          </select>
+        </div>
+      </div>
+      <div class="row row-lg-12">
+        <div class="col col-lg-4">
+          <label class="form-label text-label">Número de operandos:</label>
+          <input type="text" id="textInput" class="form-control" formControlName="nboperands">
+        </div>
+        <div class="col col-lg-4 mb-3">
+          <label class="form-label text-label">Número de dígitos de los operandos:</label>
+          <input type="text" id="textInput" class="form-control" formControlName="nbdigitsop">
+        </div>
+        <div class="col col-lg-4 mb-3">
+          <label class="form-label text-label">Número de dígitos del resultado:</label>
+          <input type="text" id="textInput" class="form-control" formControlName="nbdigitsrslt">  
+        </div>
+      </div>
+      <div class="row row-lg-12">
+        <div class="col col-lg-4">
+            <div class="mb-3">
+                <label class="form-label text-label">Cantidad de operaciones:</label>
+                <input type="text" id="textInput" class="form-control" formControlName="cantidad">
+            </div>
+        </div>
+      </div>
+      <div class="row-lg-auto text-center">
+        <button type="submit" class="btn add-btn">Añadir problema</button>
+      </div>
+    </fieldset>
+</form>

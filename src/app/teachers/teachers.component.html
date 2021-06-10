@@ -109,7 +109,17 @@
             <button class="btn add-btn me-2" type="button" disabled *ngIf="guardando">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 Guardando...
-              </button>
+            </button>
+            <button type="submit" class="btn btn-dark me-2" *ngIf="!generando && !visualizar" (click)="generarPDF()">
+                <i class="bi bi-file-earmark-text"></i> Generar PDF
+            </button>
+            <button type="submit" class="btn btn-dark me-2" *ngIf="!generando && visualizar" (click)="visualizarPDF()">
+                <i class="bi bi-file-earmark-text"></i> Visualizar PDF
+            </button>
+            <button class="btn  btn-dark me-2" type="button" disabled *ngIf="generando">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Generando PDF ...
+            </button>
           </div> 
     </div>
 </div>

@@ -51,8 +51,8 @@ export class GeneradorComponent implements OnInit {
   }
 
   emitEnunciado(msgContent: string){
-    let msgHeader = "\\enunciado ";
-    let msgEnd = "\n";
+    let msgHeader = "\\question ";
+    let msgEnd = `\\\\\n`;
     let msg = `${msgHeader}${msgContent}${msgEnd}`;
     this.enunciado.emit(msg);
     this.esEnunciado = false;

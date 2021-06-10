@@ -14,7 +14,7 @@ export class FormularioSecuenciasComponent implements OnInit {
     nbitems: new FormControl(''),
     geq: new FormControl(''),
     leq: new FormControl(''),
-    cantidad: new FormControl('')
+    cantidad: new FormControl('1')
   });
 
   @Output() problema = new EventEmitter<string>();
@@ -29,7 +29,8 @@ export class FormularioSecuenciasComponent implements OnInit {
     let nbitems = this.secuenciasForm.controls.nbitems.value;
     let geq = this.secuenciasForm.controls.geq.value;
     let leq = this.secuenciasForm.controls.leq.value;
-    let str = `{{.Sequence (dict "type" ${tipo} "nbitems" ${nbitems} "geq" ${geq} "leq" ${leq}}}\n`;
+    let cantidad = this.secuenciasForm.controls.cantidad.value;
+    let str = `{{range .Slice ${cantidad}}}{{.Sequence (dict "type" ${tipo} "nbitems" ${nbitems} "geq" ${geq} "leq" ${leq})}}{{end}}\n`;
     this.emitProblema(str);
     this.secuenciasForm.reset();
   }

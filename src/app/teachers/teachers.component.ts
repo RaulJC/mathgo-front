@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { GroupsService } from '../core/services/groups.service';
 import { ProblemSharingService } from '../core/services/problem-sharing.service';
+import { PublicServicesService } from '../core/services/public-services.service';
 import { IGrupo } from '../shared/interfaces/interfaces';
 
 @Component({
@@ -20,13 +21,17 @@ export class TeachersComponent implements OnInit {
   variables: string[];
   datos : string[][];
   guardando: boolean = false;
+  generando: boolean = false;
+  visualizar: boolean = false;
 
   crearGrupoForm: FormGroup = new FormGroup({
     titulo: new FormControl(''),
     descripcion: new FormControl('')
   });
 
-  constructor(private grupoService: GroupsService, private problemSharingService: ProblemSharingService) { }
+  constructor(private grupoService: GroupsService,
+     private problemSharingService: ProblemSharingService,
+     private publicServices: PublicServicesService) { }
 
   ngOnInit(): void {
     this.grupoService.obtenerGrupos().subscribe(response=>{
@@ -72,6 +77,7 @@ export class TeachersComponent implements OnInit {
 
   guardarPlantilla(move:boolean){
     this.guardando = true;
+    this.visualizar = false;
     this.problemSharingService.getProblemaActual().subscribe(problema=>{
       this.grupoService.guardarGrupo(problema).subscribe(response=>{
         this.problemSharingService.setProblemaActual(response.grupo);
@@ -93,6 +99,7 @@ export class TeachersComponent implements OnInit {
   }
 
   volverEditor(){
+    this.visualizar = false;
     this.componente = "editor";
   }
 
@@ -122,5 +129,22 @@ export class TeachersComponent implements OnInit {
       this.grupoSeleccionado.datos.splice(indice,1);
     });
     this.filasSeleccionadas = [];
+  }
+
+  generarPDF(){
+    this.generando = true;
+    if(!this.visualizar){
+      this.grupoService.generarPdf(this.grupoSeleccionado.id).subscribe(response =>{
+        this.visualizar = false;
+        if(response) {
+          this.generando = false;
+          this.visualizar = true;
+        }
+      });
+    }
+  }
+
+  visualizarPDF(){
+    this.publicServices.visualizarPdf();
   }
 }

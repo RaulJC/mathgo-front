@@ -8,9 +8,10 @@ import { GeneradorComponent } from './generador/generador.component';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { CoreModule } from '../core/core.module';
 import { FormularioSecuenciasComponent } from './formulario-secuencias/formulario-secuencias.component';
+import { BasicOperationsFormComponent } from './basic-operations-form/basic-operations-form.component';
 
 @NgModule({
-  declarations: [TeachersComponent, CodigoComponent, GeneradorComponent, FormularioSecuenciasComponent],
+  declarations: [TeachersComponent, CodigoComponent, GeneradorComponent, FormularioSecuenciasComponent, BasicOperationsFormComponent],
   imports: [
     CommonModule,
     CoreModule,
