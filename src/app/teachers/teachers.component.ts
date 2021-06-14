@@ -22,6 +22,7 @@ export class TeachersComponent implements OnInit {
   datos : string[][];
   guardando: boolean = false;
   generando: boolean = false;
+  descargando: boolean = false;
   visualizar: boolean = false;
 
   crearGrupoForm: FormGroup = new FormGroup({
@@ -134,11 +135,22 @@ export class TeachersComponent implements OnInit {
   generarPDF(){
     this.generando = true;
     if(!this.visualizar){
-      this.grupoService.generarPdf(this.grupoSeleccionado.id).subscribe(response =>{
+      this.grupoService.generarPdfEjemplo(this.grupoSeleccionado.id).subscribe(response =>{
         this.visualizar = false;
         if(response) {
           this.generando = false;
           this.visualizar = true;
+        }
+      });
+    }
+  }
+
+  descargarPdfs(){
+    this.descargando = true;
+    if(!this.visualizar){
+      this.grupoService.descargarPdfs(this.grupoSeleccionado.id).subscribe(response =>{
+        if(response) {
+          this.descargando = false;
         }
       });
     }

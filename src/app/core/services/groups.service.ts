@@ -102,7 +102,21 @@ export class GroupsService {
     );
   }
 
-  generarPdf(idGrupo:number):Observable<Boolean>{
+  generarPdfEjemplo(idGrupo:number):Observable<Boolean>{
+    const headers = new HttpHeaders().set("X-CustomHeader", "custom header value")
+    .append('Content-Type', 'application/json')
+    .append('Accept', 'application/json')
+    .append('Authorization',  `Bearer ${localStorage.getItem('id_token')}`);
+
+    return this.http.post<Boolean>(`${this.gruposUrl}/documentos/${idGrupo.toString()}/example`,null,{headers: headers, observe: "response", responseType: "json"})
+    .pipe(
+      map(response =>{
+        return response.body as Boolean;
+      }),catchError(this.handleError)
+    );
+  }
+
+  descargarPdfs(idGrupo:number):Observable<Boolean>{
     const headers = new HttpHeaders().set("X-CustomHeader", "custom header value")
     .append('Content-Type', 'application/json')
     .append('Accept', 'application/json')

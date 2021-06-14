@@ -20,6 +20,7 @@ export class CodigoComponent implements OnInit, OnChanges {
   @Input() nuevoProblema : string;
   @Input() grupoSeleccionado : IGrupo;
 
+
   options = {
     lineNumbers: true,
     mode: this.mode,
@@ -39,13 +40,16 @@ export class CodigoComponent implements OnInit, OnChanges {
             break;
           case 'nuevoProblema': 
             this.añadirEnunciado(changes['nuevoProblema'].currentValue);
+            this.nuevoProblema = "";
         }
       }
     }
   }
 
   private añadirEnunciado(currentValue: string){
-    if(currentValue!=null) this.add(currentValue);
+    if(currentValue!=null && currentValue != ""){
+      this.add(currentValue);
+    }
   }
 
   ngOnInit(): void {

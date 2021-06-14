@@ -10,10 +10,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class FormularioSecuenciasComponent implements OnInit {
 
   secuenciasForm: FormGroup = new FormGroup({
-    tipo: new FormControl(''),
-    nbitems: new FormControl(''),
-    geq: new FormControl(''),
-    leq: new FormControl(''),
+    tipo: new FormControl('0'),
+    nbitems: new FormControl('2'),
+    geq: new FormControl('0'),
+    leq: new FormControl('9'),
     cantidad: new FormControl('1')
   });
 
@@ -22,6 +22,7 @@ export class FormularioSecuenciasComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
   onSubmit(){

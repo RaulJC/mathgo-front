@@ -33,8 +33,8 @@
     <div class="row row-lg-12 my-2">
         <div class="col col-lg-12">
             <div class="row row-lg-12">
-                <div class="col col-lg-10">
-                    <p class="h3 text-start">Plantilla del Grupo 1ºC</p>
+                <div class="col col-lg-10" *ngIf="grupoSeleccionado != null">
+                    <p class="h3 text-start">Plantilla {{grupoSeleccionado.titulo}}</p>
                 </div>
                 <div class="col col-lg-2 text-end">
                     <button type="submit" class="btn back-btn me-2" (click)="volverMisGrupos()"><i class="bi bi-door-open-fill"></i> Volver a mis grupos</button>
@@ -53,14 +53,14 @@
     </div>
     <div class="row row-lg-12 text-center justify-content-center">
         <div class="col col-lg-3 mt-2">
-            <button type="submit" class="btn add-btn me-2" (click)="guardarPlantilla(false)" *ngIf="!guardando">
+            <button type="submit" class="btn btn-dark me-2" (click)="guardarPlantilla(false)" *ngIf="!guardando">
                 <i class="bi bi-file-earmark-text"></i> Guardar cambios
             </button>
-            <button class="btn add-btn me-2" type="button" disabled *ngIf="guardando">
+            <button class="btn btn-dark me-2" type="button" disabled *ngIf="guardando">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 Guardando...
               </button>
-            <button type="submit" class="btn add-btn me-2" (click)="seleccionarDatos()"><i class="bi bi-arrow-right-circle"></i> Siguiente</button>
+            <button type="submit" class="btn btn-dark me-2" (click)="seleccionarDatos()"><i class="bi bi-arrow-right-circle"></i> Siguiente</button>
         </div>
     </div>
 </div>
@@ -70,7 +70,7 @@
         <div class="col col-lg-12">
             <div class="row row-lg-12">
                 <div class="col col-lg-10">
-                    <p class="h3 text-start">Datos del Grupo 1ºC</p>
+                    <p class="h3 text-start">Datos {{grupoSeleccionado.titulo}}</p>
                 </div>
                 <div class="col col-lg-2 text-end">
                     <button type="submit" class="btn back-btn me-2" (click)="volverEditor()"><i class="bi bi-door-open-fill"></i> Volver al editor</button>
@@ -103,15 +103,15 @@
       </table>
       <div class="row row-lg-12 my-2">
         <div class="col col-lg-12 mt-2 text-center">
-            <button type="submit" class="btn add-btn me-2" (click)="guardarPlantilla(false)" *ngIf="!guardando">
+            <button type="submit" class="btn btn-dark me-2" (click)="guardarPlantilla(false)" *ngIf="!guardando">
                 <i class="bi bi-file-earmark-text"></i> Guardar datos
             </button>
-            <button class="btn add-btn me-2" type="button" disabled *ngIf="guardando">
+            <button class="btn btn-dark me-2" type="button" disabled *ngIf="guardando">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 Guardando...
             </button>
             <button type="submit" class="btn btn-dark me-2" *ngIf="!generando && !visualizar" (click)="generarPDF()">
-                <i class="bi bi-file-earmark-text"></i> Generar PDF
+                <i class="bi bi-file-earmark-text"></i> Generar PDF Ejemplo
             </button>
             <button type="submit" class="btn btn-dark me-2" *ngIf="!generando && visualizar" (click)="visualizarPDF()">
                 <i class="bi bi-file-earmark-text"></i> Visualizar PDF
@@ -119,6 +119,13 @@
             <button class="btn  btn-dark me-2" type="button" disabled *ngIf="generando">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 Generando PDF ...
+            </button>
+            <button type="submit" class="btn btn-dark me-2" (click)="descargarPdfs()" *ngIf="!descargando">
+                <i class="bi bi-file-earmark-text"></i> Descargar PDFs
+            </button>
+            <button class="btn  btn-dark me-2" type="button" disabled *ngIf="descargando">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Descargando PDFs ...
             </button>
           </div> 
     </div>

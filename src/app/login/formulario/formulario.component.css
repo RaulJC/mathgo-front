@@ -19,3 +19,8 @@
 .singin-btn:hover{
     background-color: #79a317;
 }
+
+.error-message{
+    color:red;
+    font-size: small;
+}

@@ -4,32 +4,54 @@
     </div>
     <legend class="text-center">Registrate en MathGo</legend>
     <fieldset class="login-fields p-5">
-      <div class="alert alert-success" role="alert" *ngIf="alertMsg != null">
+      <div class="alert alert-success" role="alert" *ngIf="alertMsg != null && registroCorrecto">
+        {{alertMsg}}
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="alertMsg != null  && !registroCorrecto">
         {{alertMsg}}
       </div>
       <div class="mb-3">
         <label class="form-label text-label">¿Que rol vas a desempeñar?</label>
         <select class="form-select form-select-mb mb-3" aria-label=".form-select-mb example" formControlName="rol">
-            <option>Selecciona tu rol</option>
-            <option value="KID">KID</option>
+            <option value="KID" selected>KID</option>
             <option value="PROFESIONAL">PROFESIONAL</option>
-          </select>
+        </select>
       </div>
       <div class="mb-3">
-            <label class="form-label text-label">Nombre</label>
-            <input type="text" id="textInput" class="form-control" placeholder="Nombre" formControlName="nombre">
+        <label class="form-label text-label">Nombre <b style="color:red">*</b></label>
+        <input type="text" id="textInput" class="form-control" placeholder="Nombre" formControlName="nombre">
+        <span class="error-message" 
+        *ngIf="registerForm.get('nombre')?.hasError('required') && (registerForm.get('nombre')?.dirty || registerForm.get('nombre')?.touched)">
+          Campo obligatorio
+        </span>
       </div>
       <div class="mb-3" *ngIf="registerForm.controls.rol.value == 'KID'">
-        <label class="form-label text-label">Edad</label>
+        <label class="form-label text-label">Edad <b style="color:red">*</b></label>
         <input type="text" id="textInput" class="form-control" placeholder="Edad" formControlName="edad">
+        <span class="error-message" 
+        *ngIf="registerForm.get('edad')?.hasError('required') && (registerForm.get('edad')?.dirty || registerForm.get('edad')?.touched)">
+          Campo obligatorio
+        </span>
+        <span class="error-message" 
+        *ngIf="registerForm.get('edad')?.hasError('pattern') && (registerForm.get('edad')?.dirty || registerForm.get('edad')?.touched)">
+          Edad no válida seleccione una edad del 5 al 15
+        </span>
       </div>
       <div class="mb-3">
-        <label class="form-label text-label">Nombre de usuario</label>
+        <label class="form-label text-label">Nombre de usuario <b style="color:red">*</b></label>
         <input type="text" id="textInput" class="form-control" placeholder="Nombre de usuario" formControlName="username">
+        <span class="error-message" 
+        *ngIf="registerForm.get('username')?.hasError('required') && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched)">
+          Campo obligatorio
+        </span>
       </div>
       <div class="mb-3">
-        <label class="form-label text-label">Contraseña</label>
+        <label class="form-label text-label">Contraseña <b style="color:red">*</b></label>
         <input type="password" id="textInput" class="form-control" placeholder="Password" formControlName="password">
+        <span class="error-message" 
+        *ngIf="registerForm.get('password')?.hasError('required') && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+          Campo obligatorio
+        </span>
       </div>
       <div class="row-lg-auto text-center">
         <button type="submit" class="btn singin-btn container-fluid">Registrarse</button>

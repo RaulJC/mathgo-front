@@ -1,16 +1,24 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="text-center">
         <img src='../../../assets/imagenes/logo.png' alt="Pieza de puzle">
     </div>
     <legend class="text-center">Inicia sesión en MathGo</legend>
     <fieldset class="login-fields p-5">
       <div class="mb-3">
-        <label class="form-label text-label">Nombre de usuario</label>
-        <input type="text" id="textInput" class="form-control" placeholder="username" formControlName="username">
+        <label class="form-label text-label">Nombre de usuario <b style="color:red">*</b></label>
+        <input type="text" id="textInput" class="form-control" placeholder="username" formControlName="username" required>
+        <span class="error-message" 
+          *ngIf="loginForm.get('username')?.hasError('required') && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)">
+          Campo obligatorio
+        </span>
       </div>
       <div class="mb-3">
-        <label class="form-label text-label">Contraseña</label>
+        <label class="form-label text-label">Contraseña <b style="color:red">*</b></label>
         <input type="password" id="textInput" class="form-control" placeholder="password" formControlName="password">
+        <span class="error-message" 
+          *ngIf="loginForm.get('password')?.hasError('required') && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+          Campo obligatorio
+        </span>
       </div>
       <div class="row-lg-auto text-center">
         <button type="submit" class="btn singin-btn container-fluid">Iniciar Sesión</button>
